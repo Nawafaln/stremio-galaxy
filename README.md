@@ -2,124 +2,129 @@
 
 # 🌌 Stremio Galaxy
 
-### تجربة مشاهدة مكتبية بطابع المجرّة — Windows x64
+### A galaxy-inspired desktop experience for Windows x64
 
-**الإصدار 5.0.24 · واجهة عربية وإنجليزية · مشغّل MPV · أدوات أنمي · Watch Party**
+**Version 5.0.24 · Multilingual Stremio interface · Native MPV playback · Anime tools · Watch Party**
 
-[⬇️ صفحة التحميل والإصدارات](https://github.com/Nawafaln/stremio-galaxy/releases) · [الإبلاغ عن مشكلة](https://github.com/Nawafaln/stremio-galaxy/issues)
+[⬇️ Downloads & Releases](https://github.com/Nawafaln/stremio-galaxy/releases) · [Report an Issue](https://github.com/Nawafaln/stremio-galaxy/issues)
 
 </div>
 
-## عن المشروع وصاحب النسخة الأصلية
+## About the project and its original creator
 
-**Stremio Galaxy** نسخة مجتمعية معدّلة، مبنية على مشروع **[stremio-community-v5](https://github.com/Zaarrg/stremio-community-v5)** الذي أنشأه وطوّره **[Zaarrg](https://github.com/Zaarrg)**، وبالتحديد فرع `webview-windows`. تعتمد هذه السلسلة من المشاريع على عمل فريق **Stremio** ومساهميه.
+**Stremio Galaxy** is an independent community fork based on **[stremio-community-v5](https://github.com/Zaarrg/stremio-community-v5)**, created and developed by **[Zaarrg](https://github.com/Zaarrg)**, using its `webview-windows` branch. These projects build on the work of the **Stremio team and contributors**.
 
-تطوير نسخة Galaxy ونشرها في هذا المستودع: **[Nawafaln](https://github.com/Nawafaln)**. هذه نسخة مجتمعية مستقلة، وليست إصداراً رسمياً من Stremio ولا تدّعي الانتساب إلى فريقه. تبقى حقوق المؤلفين وإشعارات التراخيص محفوظة.
+Galaxy customization and release maintenance: **[Nawafaln](https://github.com/Nawafaln)**. This is a community project, not an official Stremio release, and it is not affiliated with the original team. Original copyright notices and third-party licenses are retained.
 
-## التحميل والتثبيت
+## Download and install
 
-1. افتح **[صفحة الإصدارات](https://github.com/Nawafaln/stremio-galaxy/releases)** واختر الإصدار المستقر المنشور.
-2. من **Assets** حمّل `Stremio-Galaxy-5.0.24-windows-x64-setup.exe` عند إتاحته. ملف `Source code` مخصص للمطورين، وليس لتثبيت البرنامج.
-3. أغلق Galaxy بالكامل، بما في ذلك أيقونة شريط النظام، ثم شغّل المثبّت. عند الترقية اختر مجلد Galaxy نفسه.
-4. يتطلب البرنامج Windows بنظام x64 وMicrosoft WebView2. يفحص المثبّت WebView2 ويمكنه تشغيل مثبت Microsoft عند غيابه؛ يحتاج ذلك إلى الإنترنت.
-5. سجّل الدخول لاستعادة مكتبتك وإضافاتك من حسابك. تثبيت الإضافات المقترحة يتطلب موافقتك داخل Stremio.
+1. Open **[Releases](https://github.com/Nawafaln/stremio-galaxy/releases)** and select a published stable release.
+2. Under **Assets**, download `Stremio-Galaxy-5.0.24-windows-x64-setup.exe` when available. Source archives are for developers, not installation.
+3. Fully close Galaxy, including its system-tray process, before installing. For an upgrade, select the existing Galaxy installation folder.
+4. Windows x64 and Microsoft WebView2 are required. Setup checks for WebView2 and can run Microsoft's installer if it is missing; that step requires internet access.
+5. Sign in to restore your account library and addons. Suggested addons require your confirmation inside Stremio.
 
-المثبّت لا يحمل شهادة ناشر Windows ‏(Authenticode) حالياً. توقيع ملف التحديث للتحقق من سلامة التحديث وظيفة منفصلة عن شهادة الناشر. حمّل الملفات من هذا المستودع وتحقق من ملف SHA-256 المرفق.
+The installer currently has no Windows publisher certificate (Authenticode). Signed update manifests verify update integrity separately from Windows publisher signing. Download from this repository and compare the installer with its attached SHA-256 checksum.
 
-## مميزات Galaxy — بالترتيب
+## Language support
 
-### 1. الهوية والواجهة
+**Galaxy retains all interface languages available in Stremio**, including Arabic and English, with left-to-right and right-to-left layouts. Available translations follow the selected Stremio web interface. Some Galaxy-specific tools, including Watch Party, currently provide Arabic and English labels and use English as the fallback for other languages. Localized titles and descriptions depend on metadata availability and the user's configured TMDB key.
 
-- هوية Galaxy مستقلة: اسم البرنامج وأيقونته ونافذته ومجلد تثبيته وملفاته الشخصية وبروتوكوله.
-- طابع Galaxy Nebula بخلفية فضائية ونجوم متحركة وألوان بنفسجية وزرقاء وأسطح داكنة متناسقة.
-- شاشة بدء وشعار مخصصان، وحركات تحترم إعداد تقليل الحركة وتُوقف خلف الفيديو أو عند إخفاء الواجهة.
-- صفحة رئيسية سينمائية، وبطاقات أعمال محسنة، وشريط بحث وتنقل علوي في الصفحة الرئيسية، مع الحفاظ على تنقل الصفحات الداخلية.
-- دعم العربية والإنجليزية واتجاهي RTL/LTR، وتحديث أجزاء الواجهة عند تغيير اللغة.
-- لوحة إعدادات محسّنة تجمع خيارات المظهر والتحديث والكاش والبيانات والإضافات.
+## Galaxy features — in order
 
-### 2. بيانات الأعمال والتقييمات
+### 1. Galaxy identity and interface
 
-- بطاقات تعرض المعلومات المتاحة من مصادرها، مثل السنة والنوع والتقييم، مع خلفيات وتفاصيل للعمل.
-- عرض تقييمَي IMDb وMyAnimeList عندما تتوفر مطابقة وبيانات صالحة، دون اختلاق تقييمات أو ملء البيانات الناقصة.
-- دعم بيانات وعناوين وأوصاف وتصنيفات محلية عبر TMDB ومطابقات Kitsu؛ يعتمد ذلك على إعداد مفتاح TMDB وتوفر الخدمة والمطابقة.
-- التصنيف العمري عبر OMDb خيار يحتاج إلى مفتاح يضيفه المستخدم، وليس مضموناً لكل عمل.
+- Independent application name, icon, window identity, installation folder, profile, and application protocol.
+- Galaxy Nebula appearance with a purple-and-blue space background, animated stars, and coordinated dark surfaces.
+- Custom startup screen and logo; motion respects reduced-motion preferences and pauses behind video or when the interface is hidden.
+- Cinematic home layout, enhanced content cards, and a home-page search and navigation header, while preserving navigation on internal pages.
+- Multilingual interface with RTL/LTR support and responsive language changes in integrated Galaxy components.
+- Improved settings dashboard for appearance, updates, cache, metadata, and addon controls.
+
+### 2. Metadata, artwork, and ratings
+
+- Content cards show available year, genres, ratings, artwork, and details from their providers.
+- IMDb and MyAnimeList ratings can appear side by side when valid data and an unambiguous content match are available. Missing values are not fabricated.
+- Localized titles, descriptions, and genres through TMDB and Kitsu mappings. **Each user supplies their own TMDB key in Settings**; the public build includes no shared private key.
+- Optional age-rating lookup through OMDb requires a user-provided OMDb key and is not available for every title.
 
 ### 3. Galaxy Anime
 
-- فهارس للأنمي مبنية على Anime Kitsu، مع الحفاظ على معرفات المحتوى والحلقات لتوافق مصادر التشغيل.
-- استعراض الشائع والرائج والمعروض حالياً والبحث بحسب ما يتيحه المصدر.
-- فلاتر الأنواع والتصنيفات، بما فيها Isekai، مع فلتر سنة بداية العرض وإمكانية الجمع بين الفلاتر.
-- تشغيل خدمة بيانات الأنمي المحلية تلقائياً مع البرنامج. الإضافة تقدم الفهارس والبيانات؛ مصادر الفيديو تأتي من إضافات المستخدم.
-- يعرض المثبّت Galaxy Anime بدلاً من Anime Kitsu، مع تأكيد التثبيت داخل الحساب ودون حذف إضافاته القائمة تلقائياً.
+- Anime catalogs based on Anime Kitsu, retaining content and episode identifiers for playback-provider compatibility.
+- Popular, trending, currently airing, and search catalogs, subject to upstream availability.
+- Genre and category filters, including Isekai, plus a release-start-year filter that can be combined with genre selections.
+- A local anime metadata service starts with Galaxy. Galaxy Anime supplies catalogs and metadata; video sources come from the user's addons.
+- Setup offers Galaxy Anime in place of Anime Kitsu, with account installation confirmed by the user and no silent removal of existing account addons.
 
-### 4. تجربة الحلقات والترجمات والمصادر
+### 4. Episodes, sources, and subtitles
 
-- عرض محسّن لصفوف الحلقات ومصادر التشغيل، وصور حلقات ثابتة أثناء التنقل، وتحسين معلومات التورنت والمصدر المتاحة.
-- فلاتر ومفاضلة للمصادر بحسب بيانات الترجمات المعلنة؛ رموز اللغات المتوقعة ليست ضماناً لوجود ترجمة فعلية.
-- تخطي المقدمة والنهاية اعتماداً على الفصول المسماة داخل الملف، مع مؤشرات على شريط الوقت وأزرار مترجمة.
-- `Tab` للتخطي و`Shift+Tab` للتراجع. الملفات التي تفتقر إلى فصول مناسبة لا تحصل على نطاقات تخطٍ تخمينية.
-- انتقال محسّن للحلقة التالية مع عد تنازلي وإلغاء، والمحافظة على مشاهد ما بعد النهاية عند وجود فصول تدل عليها.
-- محاولة الحفاظ على الجودة ولغة الترجمة عند الانتقال، والتحقق من مسارات الترجمة في الملف الجديد؛ تبقى المصادر اليدوية متاحة عند تعذر المطابقة.
+- Improved episode and source rows, stable episode thumbnails during navigation, and clearer available torrent/source information.
+- Source filtering and ranking using declared subtitle metadata. Expected language codes are not proof of actual subtitle availability.
+- Intro and outro skipping based on named chapters inside the media file, with timeline markers and localized controls.
+- `Tab` skips a recognized segment; `Shift+Tab` undoes the skip. Files without suitable chapters do not receive guessed skip ranges.
+- Improved next-episode handling with a countdown and Cancel, preserving post-ending scenes when chapter information identifies them.
+- Attempts to retain quality and subtitle language across episodes, verifying tracks in the new file and leaving manual source selection available when matching fails.
 
-### 5. المشاهدة الجماعية Watch Party
+### 5. Watch Party
 
-- زر مدمج لإنشاء غرفة أو الانضمام إليها برمز دعوة، مع واجهة عربية وإنجليزية وحالة اتصال وعدد مشاركين.
-- ربط محلي مع MPV لمزامنة التشغيل والإيقاف والتقديم؛ المضيف يتحكم في حالة تشغيل الغرفة.
-- تشغيل المرافق المحلي تلقائياً دون الحاجة إلى تثبيت Node بشكل منفصل، واستئناف المزامنة بعد الانقطاع مع احترام تعطيلها يدوياً.
-- يحتاج المشاركون إلى فتح العمل نفسه وإلى توفر خدمة الغرف والإنترنت. لا تُرسل روابط الفيديو إلى الغرفة، ولا توزّع الغرفة ملفات الفيديو.
-- اختبارات المزامنة المحلية لا تُعد ضماناً لاختبار جميع سيناريوهات جهازين عبر الإنترنت؛ تعتمد التجربة على الخدمة والاتصال والمصدر.
+- Integrated controls to create a room or join with an invite code, showing connection state and participant counts.
+- A local MPV companion synchronizes playback, pause, and seeking; only the host publishes the room's playback state.
+- Automatic companion startup without installing Node separately, reconnection handling, and respect for manual synchronization opt-out.
+- Arabic and English controls, following the interface language, with English fallback for other languages.
+- Participants need the same film or episode, internet access, and an available room service. Rooms do not distribute video files or transmit stream URLs.
+- Local synchronization tests do not establish that every two-device internet scenario has been tested; results depend on connectivity, the service, and playback sources.
 
-### 6. الكاش والتثبيت والتحديث
+### 6. Cache, installation, and updates
 
-- عرض مجلد كاش الفيديو وتغييره من الإعدادات عبر منتقي مجلدات Windows؛ يسري التغيير بعد إعادة التشغيل ولا ينقل الكاش القديم تلقائياً.
-- مثبّت مستقل يضم الخدمات المحلية وملفات التشغيل اللازمة، ويحافظ على إعدادات المستخدم وحسابه والكاش أثناء الترقيات المدعومة.
-- تحديثات Galaxy موقّعة باستخدام RSA/SHA-256 من مستودع Galaxy، مع تحقق من هوية المنتج والإصدار وبصمات المثبّت والملف التنفيذي.
-- فحص دوري كل ست ساعات عند تفعيل التحديث، وتنزيل الإصدار الأحدث في الخلفية، والتثبيت بعد إغلاق البرنامج بالكامل.
-- خيار لتعطيل التحديث التلقائي، ونسخة احتياطية من ملفات البرنامج المملوكة له لمحاولة استعادتها عند فشل التثبيت.
-- أي نسخة قديمة ذات قناة تحديث فارغة تحتاج إلى تثبيت النسخة المهيأة يدوياً مرة واحدة. لا يعيد الإصدار تثبيت نفسه تلقائياً.
+- View and change the video-cache folder through a native Windows folder picker. Changes take effect after restarting; existing cache files are not migrated automatically.
+- Independent installer with required local services and runtime files, preserving user settings, account profiles, and cache during supported upgrades.
+- RSA/SHA-256-signed Galaxy updates from this repository, checking product identity, version, installer integrity, and the installed executable.
+- When enabled, update checks run every six hours, downloads happen in the background, and installation waits until Galaxy has fully exited.
+- An automatic-update toggle and backups of package-owned files for recovery after a failed installation.
+- Older builds with an empty update channel need one manual installation of the configured build. A release does not automatically reinstall itself.
 
-## المميزات الموروثة من نسخة Zaarrg
+## Features inherited from Zaarrg's version
 
-تعتمد الإمكانات التالية على إعداد MPV وWindows والعتاد والواجهة والإضافات المستخدمة؛ ذكرها لا يعني أن كل مكون اختياري مضمّن في مثبّت Galaxy.
+Availability depends on MPV settings, Windows, hardware, the selected web interface, and installed components. Optional integrations listed here are not necessarily bundled in the Galaxy installer.
 
-1. **مشغّل MPV مدمج:** تشغيل أصلي مع تسريع عتادي ودعم دقة 4K بحسب الملف والجهاز.
-2. **إعدادات فيديو متقدمة:** واجهات الرسوميات التي يدعمها MPV مثل Direct3D وOpenGL وVulkan، بحسب البناء والإعدادات.
-3. **HDR والصوت المتقدم:** بما في ذلك خيارات تمرير الصوت الملائمة لـDolby Atmos عندما تتوافق الأجهزة والمخرجات والإعدادات.
-4. **تحسين الصورة:** قابلية إعداد Anime4K وAnimeJaNai وخيارات MPV الأخرى؛ قد تتطلب تنزيل مكونات وإعدادها منفصلة.
-5. **صورة داخل صورة** وخيارات النافذة والمظهر الداكن.
-6. **Discord Rich Presence** لعرض نشاط المشاهدة، بحسب إعدادات Discord والتطبيق.
-7. **ThumbFast:** دعم معاينة صور أثناء التقديم عند تثبيت المكون وتكوينه؛ ليس وعداً بتضمينه في هذا المثبّت.
-8. **الملفات المحلية:** السحب والإفلات أو الفتح باستخدام البرنامج للوسائط المدعومة في MPV وFFmpeg.
-9. **الترجمات المحلية:** إضافة ملف ترجمة بالسحب والإفلات وتخصيص مظهرها عبر إعدادات MPV.
-10. **اختيار الصوت والترجمة:** تفضيلات للغات والمسارات وكلمات أولوية الترجمة بحسب الإعدادات.
-11. **التورنت وMagnet:** دعم التشغيل عبر خادم Stremio والمصادر التي يختارها المستخدم.
-12. **Chromecast:** دعم الواجهة الأصلية للأجهزة المتوافقة، ويتوقف نجاح البث على المصدر والجهاز والشبكة.
-13. **نظام إضافات Stremio** وتثبيتها من الواجهة، ودعم بعض إضافات المتصفح غير المضغوطة المتوافقة.
-14. **إعدادات سلوك النافذة:** الإغلاق أو التصغير إلى شريط النظام والإيقاف عند التصغير أو فقدان التركيز وخيارات التكبير.
-15. **ملفات إعداد MPV وملحقاته** لتخصيص المفاتيح والسكربتات والمشغّل.
+1. **Native MPV playback:** hardware decoding and 4K playback when supported by the file and device.
+2. **Advanced video configuration:** MPV graphics options such as Direct3D, OpenGL, and Vulkan, depending on the build and settings.
+3. **HDR and advanced audio:** including audio-passthrough options suitable for Dolby Atmos with compatible equipment and configuration.
+4. **Upscaling options:** support for configuring Anime4K, AnimeJaNai, and other MPV processing options; additional downloads and setup may be required.
+5. **Picture-in-picture**, window controls, and Windows dark-mode integration.
+6. **Discord Rich Presence** for viewing activity, subject to Discord and application settings.
+7. **ThumbFast support** for seek previews when installed and configured; this is not a promise that ThumbFast is bundled.
+8. **Local media playback:** drag and drop or open supported MPV/FFmpeg files with the application.
+9. **Local subtitles:** drag subtitle files into playback and customize their appearance through MPV configuration.
+10. **Audio and subtitle preferences:** default languages, track selection, and subtitle-keyword priorities.
+11. **Torrent and magnet support:** through the Stremio server and user-selected sources.
+12. **Chromecast support:** inherited interface integration, dependent on the source, receiver, and network.
+13. **Stremio addons** and compatible unpacked browser extensions.
+14. **Window behavior settings:** tray behavior, pause on minimize or focus loss, and zoom options.
+15. **MPV configuration and scripting** for player settings, shortcuts, and extensions.
 
-المشروع الأصلي يقدم أيضاً توزيعات Portable وتكامل Scoop وChocolatey ونظام تحديثه الخاص. لا تعني هذه الخيارات وجود حزم Galaxy منشورة بتلك الطرق؛ تستخدم Galaxy قناة التحديث المستقلة الموضحة أعلاه.
+The upstream project also offers portable distributions, Scoop/Chocolatey integration, and its own updater. This does not imply that equivalent Galaxy packages have been published. Galaxy uses its independent signed update channel.
 
-## المصدر والترخيص
+## Source and license
 
-ترخيص التطبيق **GPL-3.0** مع الحفاظ على إشعارات المشروع الأصلي. تحتفظ المكونات الخارجية بتراخيصها الخاصة. يُرفق المصدر المطابق وتعليمات البناء وإشعارات المكونات مع الإصدار؛ أرشيف المصدر المرفق كأصل مستقل هو مصدر Galaxy، أما أرشيفا GitHub الآليان فيعكسان محتويات المستودع عند الوسم فقط.
+The application is distributed under **GPL-3.0**, preserving upstream notices. Third-party components retain their respective licenses. The matching Galaxy source archive, build instructions, and dependency notices accompany the release. The separately attached source archive contains the application sources; GitHub's automatic source archives contain only the repository contents at the selected tag.
 
-تتوفر الأفلام والمسلسلات والبيانات والترجمات بحسب خدمات وإضافات المستخدم، وليست مملوكة لهذا المشروع. استخدم المصادر التي يحق لك الوصول إليها.
+Content, metadata, and subtitles depend on the user's services and addons and are not owned by this project. Use sources you are authorized to access.
 
-## الشكر والتقدير
+## Credits and thanks
 
-شكراً لكل من ساهم بكود أو إضافة أو بيانات أو أداة اعتمدنا عليها:
+Thank you to everyone whose code, addon, data, or tools helped make Galaxy possible:
 
-- **[Zaarrg](https://github.com/Zaarrg)** ومساهمو **[stremio-community-v5](https://github.com/Zaarrg/stremio-community-v5)** وواجهاته وإصلاحاته؛ هذه النسخة قائمة على عملهم.
-- فريق **[Stremio](https://github.com/Stremio)** ومساهموه، و**Cinemeta**، ومنظومة إضافات Stremio.
-- مطورو **Anime Kitsu** ومجتمع **[Kitsu](https://kitsu.io)**، ومطورو **OpenSubtitles v3** و**[OpenSubtitles](https://www.opensubtitles.com)**.
-- **[TMDB](https://www.themoviedb.org)** و**[OMDb](https://www.omdbapi.com)** ومصادر التقييم الأصلية **IMDb** و**MyAnimeList**. هذا المنتج يستخدم TMDB API لكنه غير معتمد أو مصدّق عليه من TMDB.
-- **[Fribb / anime-lists](https://github.com/Fribb/anime-lists)** ومساهموه لمطابقات معرفات الأنمي، ومطورو **[Jikan-Edge](https://jikan.lucashdo.com/docs)** ومن سبقهم في مشروع **Jikan**.
-- **[mpv](https://mpv.io)** و**[FFmpeg](https://ffmpeg.org)** و**[Lua](https://www.lua.org)** ومساهموها.
-- **[Microsoft WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2)**، و**[Node.js](https://nodejs.org)**، و**[Three.js](https://threejs.org)**.
-- **[Discord RPC](https://github.com/discord/discord-rpc)** و**[OpenSSL](https://www.openssl.org)** و**[curl](https://curl.se)** و**[nlohmann/json](https://github.com/nlohmann/json)** و**[WIL](https://github.com/microsoft/wil)** و**[zlib](https://zlib.net)**.
-- **[Cloudflare Workers](https://workers.cloudflare.com)** وأدوات خدمة الغرف، و**[NSIS](https://nsis.sourceforge.io)** وأدوات البناء والتغليف.
-- مطورو الأدوات الاختيارية الموروثة: **[bloc97 / Anime4K](https://github.com/bloc97/Anime4K)** و**[the-database / AnimeJaNai](https://github.com/the-database/mpv-upscale-2x_animejanai)** و**[po5 / ThumbFast](https://github.com/po5/thumbfast)**.
-- مطورو **Torrentio** و**AIO Metadata** على التكاملات السابقة؛ Torrentio لم يعد مقترحاً في المثبّت الحالي، ومسار الترجمة المركزي الحالي موضح أعلاه.
+- [Zaarrg](https://github.com/Zaarrg) and the contributors to [stremio-community-v5](https://github.com/Zaarrg/stremio-community-v5), its web interfaces, and compatibility fixes: Galaxy is built on your work.
+- The [Stremio team and contributors](https://github.com/Stremio), Cinemeta, and the Stremio addon ecosystem.
+- The Anime Kitsu developers, the [Kitsu community](https://kitsu.io), the OpenSubtitles v3 developers, and [OpenSubtitles](https://www.opensubtitles.com).
+- [TMDB](https://www.themoviedb.org), [OMDb](https://www.omdbapi.com), and the original rating providers IMDb and MyAnimeList. This product uses the TMDB API but is not endorsed or certified by TMDB.
+- [Fribb / anime-lists](https://github.com/Fribb/anime-lists) contributors for anime identifier mappings, the [Jikan-Edge](https://jikan.lucashdo.com/docs) developers, and the earlier Jikan project.
+- [mpv](https://mpv.io), [FFmpeg](https://ffmpeg.org), [Lua](https://www.lua.org), and their contributors.
+- [Microsoft WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2), [Node.js](https://nodejs.org), and [Three.js](https://threejs.org).
+- [Discord RPC](https://github.com/discord/discord-rpc), [OpenSSL](https://www.openssl.org), [curl](https://curl.se), [nlohmann/json](https://github.com/nlohmann/json), [WIL](https://github.com/microsoft/wil), and [zlib](https://zlib.net).
+- [Cloudflare Workers](https://workers.cloudflare.com) and the room-service tooling, [NSIS](https://nsis.sourceforge.io), and the build and packaging tools.
+- The optional upstream integration authors: [bloc97 / Anime4K](https://github.com/bloc97/Anime4K), [the-database / AnimeJaNai](https://github.com/the-database/mpv-upscale-2x_animejanai), and [po5 / ThumbFast](https://github.com/po5/thumbfast).
+- The Torrentio and AIO Metadata developers for earlier integrations. Torrentio is no longer offered by the current installer; the current metadata path is described above.
 
-**شكراً لجميع المساهمين ومطوري الإضافات والمكتبات والمجتمعات والمختبرين، ولكل مستخدم قدّم ملاحظة أو بلاغاً ساعد في تطوير Stremio Galaxy. الحقوق والتقدير محفوظان لأصحابها.**
+**Thank you to all contributors, addon and library developers, communities, testers, and users whose feedback helped improve Stremio Galaxy. All credit and rights remain with their respective owners.**
