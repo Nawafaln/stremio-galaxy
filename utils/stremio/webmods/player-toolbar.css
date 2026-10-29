@@ -1,0 +1,5 @@
+/* Stremio Galaxy community modification, GPL-3.0. Layout is untouched. */
+html[data-galaxy-black="1"] [class*="player-container-"] [class*="control-bar-buttons-menu-container-"] {
+ background:transparent !important;background-color:transparent !important;
+ box-shadow:none !important;backdrop-filter:none !important;
+}

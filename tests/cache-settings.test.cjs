@@ -1,0 +1,34 @@
+// Galaxy community modification, GPL-3.0.
+const {JSDOM}=require('./hover-runtime/node_modules/jsdom');
+const {readFileSync}=require('node:fs'),assert=require('node:assert/strict');
+const js=readFileSync(require('node:path').join(__dirname,'../assets/cache-settings.js'),'utf8'),css=readFileSync(require('node:path').join(__dirname,'../assets/cache-settings.css'),'utf8');
+(async()=>{
+ const dom=new JSDOM('<html><body><div class="settings-container-fixture"><div class="menu-fixture"><button data-section="general">General</button></div><div class="sections-container-fixture"><div>Original section</div></div></div></body></html>',{url:'https://stremio.zarg.me/#/settings',runScripts:'outside-only'});
+ const w=dom.window;let language='eng',receive;const calls=[];
+ w.chrome={webview:{postMessage:m=>calls.push(JSON.parse(m)),addEventListener:(name,cb)=>receive=cb,removeEventListener(){}}};
+ w.core={getState:async()=>({profile:{settings:{interfaceLanguage:language}}})};
+ w.eval(js.replace('__GALAXY_CACHE_CONFIG__',JSON.stringify({enabled:true,origins:['https://stremio.zarg.me'],css})));
+ await w.GalaxyCacheSettings.refreshLocale();
+ assert.equal(w.document.querySelector('[data-galaxy-cache-menu]').textContent,'Cache');
+ assert.equal(w.document.querySelectorAll('[data-section]').length,1,'original settings menu retained');
+ receive({data:JSON.stringify({object:'transport',args:['galaxy-cache-state',{path:'D:\\cache\\stremio-cache',pending:false,error:''}]})});
+ const button=w.document.querySelector('.galaxy-cache-change');assert.equal(button.disabled,false);
+ button.click();assert.equal(calls.at(-1).args[0],'galaxy-cache-choose');assert.equal(button.disabled,true);
+ receive({data:{object:'transport',args:['galaxy-cache-state',{path:'D:\\new\\stremio-cache',pending:true,error:''}]}});
+ assert(w.document.querySelector('.galaxy-cache-status').textContent.includes('Restart'));
+ language='ara';await w.GalaxyCacheSettings.refreshLocale();assert.equal(w.document.querySelector('[data-galaxy-cache-menu]').textContent,'كاش');assert.equal(w.document.querySelector('[data-galaxy-cache-panel]').dir,'rtl');assert.equal(button.textContent,'تغيير المجلد');
+ receive({data:{object:'transport',args:['galaxy-cache-state',{path:'D:\\new\\stremio-cache',error:'write'}]}});assert(w.document.querySelector('.galaxy-cache-status').textContent.includes('تعذر'));
+ assert.equal(w.GalaxyCacheSettings.resolve('fra'),'fr');assert.equal(w.GalaxyCacheSettings.resolve('xx'),'en');assert.equal(w.GalaxyCacheSettings.resolve('pt-BR'),'pt');
+ w.document.body.append(w.document.createElement('div'));await new Promise(r=>setTimeout(r,0));assert.equal(w.document.querySelectorAll('[data-galaxy-cache-panel]').length,1);
+ delete w.core;
+ const original=w.document.querySelector('[class*="sections-container-"] > :not([data-galaxy-cache-panel])');
+ original.__reactFiber$fixture={memoizedProps:{},return:{memoizedProps:{profile:{settings:{interfaceLanguage:'ara'}}}}};
+ await w.GalaxyCacheSettings.refreshLocale();assert.equal(w.document.querySelector('[data-galaxy-cache-menu]').textContent,'كاش','legacy rendered-profile language');
+ original.__reactFiber$fixture.return.memoizedProps.profile.settings.interfaceLanguage='eng';
+ await w.GalaxyCacheSettings.refreshLocale();assert.equal(button.textContent,'Change folder','legacy live language changes');
+ delete original.__reactFiber$fixture.return.memoizedProps.profile;
+ original.__reactFiber$fixture.return.dependencies={firstContext:{memoizedValue:{core:{transport:{getState:async()=>({profile:{settings:{interfaceLanguage:'ara'}}})}}}}};
+ await w.GalaxyCacheSettings.refreshLocale();assert.equal(button.textContent,'تغيير المجلد','deployed beta core environment transport');
+ w.GalaxyCacheSettings.destroy();assert.equal(w.document.querySelectorAll('[data-galaxy-cache-panel],[data-galaxy-cache-menu]').length,0);dom.window.close();
+ console.log('PASS: settings mount, original menu retained, native read/pick bridge, pending restart, localized errors, live Arabic/RTL, locale aliases, no duplicates, cleanup');
+})().catch(e=>{console.error(e);process.exitCode=1});

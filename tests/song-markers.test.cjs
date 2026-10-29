@@ -1,0 +1,20 @@
+const {JSDOM}=require('./hover-runtime/node_modules/jsdom');
+const {readFileSync}=require('fs'),assert=require('assert/strict');
+const source=readFileSync(require('path').join(__dirname,'../utils/stremio/extensions/personal-anime-skip/segments.js'),'utf8');
+(async()=>{
+ const dom=new JSDOM('<div class="player-container-test"><div class="seek-bar-container-test"><div class="slider-container-test" style="position:relative;width:800px;height:30px"></div></div></div>',{url:'https://web.stremio.com/#/player/test',runScripts:'outside-only'});
+ const w=dom.window,handlers=new Set();
+ w.chrome={webview:{postMessage(){},addEventListener(_,f){handlers.add(f)},removeEventListener(_,f){handlers.delete(f)}}};
+ w.eval(source);
+ const emit=value=>{for(const f of handlers)f({data:JSON.stringify({object:'transport',args:['mpv-prop-change',{name:'user-data/anime-segments',data:value}]})})};
+ const data={duration:1200,ranges:[{kind:'opening',start:90,finish:180},{kind:'ending',start:1050,finish:1140}]};
+ const slider=w.document.querySelector('[class*="slider-container-"]'),style=slider.getAttribute('style');
+ emit(data);assert.equal(slider.querySelectorAll('[data-boundary]').length,4);
+ assert.deepEqual(Array.from(slider.querySelectorAll('[data-boundary]'),e=>e.style.left),['7.5%','15%','87.5%','95%']);
+ assert.equal(slider.getAttribute('style'),style);assert.equal(slider.firstChild.style.pointerEvents,'none');
+ emit(data);await new Promise(r=>setTimeout(r,10));assert.equal(slider.children.length,1);
+ emit({duration:1200,ranges:[{kind:'ending',start:1400,finish:1500}]});assert.equal(slider.children.length,0);
+ emit(data);w.location.hash='#/detail/movie/test';w.dispatchEvent(new w.HashChangeEvent('hashchange'));assert.equal(slider.children.length,0);
+ w.GalaxySongMarkers.destroy();assert.equal(handlers.size,0);dom.window.close();
+ console.log('PASS: four yellow boundaries, positions, noninteractive overlay, unchanged slider layout, idempotency, invalid data, SPA cleanup.');
+})().catch(e=>{console.error(e);process.exitCode=1});

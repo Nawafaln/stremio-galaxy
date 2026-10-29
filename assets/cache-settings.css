@@ -1,0 +1,8 @@
+/* Stremio Galaxy community modification, GPL-3.0. */
+.galaxy-cache-menu{font:inherit;color:inherit;cursor:pointer;text-align:start;background:transparent;border:0;display:block;width:100%;padding:16px 24px;border-radius:12px}
+.galaxy-cache-menu:hover,.galaxy-cache-menu:focus-visible{background:#9561cf33;outline:1px solid #b68ef455}
+.galaxy-cache-panel{box-sizing:border-box;margin:24px 0 40px;padding:24px;border:1px solid #af83e944;border-radius:18px;background:linear-gradient(135deg,#28183b99,#101a3099);color:#f1ebfb;scroll-margin-top:20px;max-width:100%;font:inherit}
+.galaxy-cache-panel h2{font-size:24px;margin:0 0 18px}.galaxy-cache-panel p{color:#cbbfd9;font-size:14px;line-height:1.7;margin:12px 0}
+.galaxy-cache-panel label{display:block;font-size:14px;margin-bottom:8px}.galaxy-cache-path{display:block;direction:ltr;text-align:left;overflow-wrap:anywhere;padding:14px;border-radius:10px;background:#08061099;border:1px solid #b997e72b;font:13px/1.7 Consolas,monospace;user-select:text}
+.galaxy-cache-change{margin-top:18px;padding:12px 20px;background:#8860cf33;border:1px solid #b48be988;border-radius:10px;color:#fff;cursor:pointer;font:inherit}.galaxy-cache-change:hover{background:#8860cf66}.galaxy-cache-change:focus-visible{outline:2px solid #d5baff;outline-offset:3px}.galaxy-cache-change:disabled{opacity:.5;cursor:wait}
+.galaxy-cache-status{min-height:24px}.galaxy-cache-status[data-error="1"]{color:#ffb4b4}

@@ -1,0 +1,40 @@
+/* Stremio Galaxy community modification, GPL-3.0. Theme tokens. */
+html[data-galaxy-theme][data-galaxy-black="1"] {
+ --primary-background-color:var(--gt-bg)!important;--secondary-background-color:var(--gt-surface)!important;
+ --modal-background-color:var(--gt-surface)!important;--primary-accent-color:var(--gt-accent)!important;
+ --quaternary-accent-color:var(--gt-accent)!important;--primary-foreground-color:var(--gt-text)!important;
+ --secondary-foreground-color:var(--gt-muted)!important;--overlay-color:var(--gt-overlay)!important;
+ --galaxy-line:var(--gt-line);--galaxy-panel:var(--gt-panel);background:var(--gt-bg)!important;color:var(--gt-text);
+}
+html[data-galaxy-theme][data-galaxy-black="1"]:not([data-galaxy-player="1"]) #galaxy-universe {background:var(--gt-universe)!important;}
+html[data-galaxy-theme][data-galaxy-black="1"] #galaxy-universe .galaxy-nebula {background:var(--gt-nebula)!important;}
+html[data-galaxy-theme][data-galaxy-stars="0"] #galaxy-universe::before,
+html[data-galaxy-theme][data-galaxy-stars="0"] #galaxy-universe::after {display:none!important;}
+html[data-galaxy-theme][data-galaxy-animation="0"] #galaxy-universe::before,
+html[data-galaxy-theme][data-galaxy-animation="0"] #galaxy-universe::after,
+html[data-galaxy-theme][data-galaxy-animation="0"] #galaxy-universe .galaxy-nebula {animation:none!important;transition:none!important;translate:0 0!important;transform:none!important;will-change:auto;}
+html[data-galaxy-theme][data-galaxy-black="1"] :is([class*="search-bar-container-"],[class*="select-input-"],[class*="select-input-container-"],[class*="filter-button-"]) {background:var(--gt-glass)!important;border-color:var(--gt-line)!important;}
+html[data-galaxy-theme][data-galaxy-black="1"] :is([class*="streams-list-container-"],[class*="streams-container-"],[class*="stream-container-"]) {background:var(--gt-glass)!important;border-color:var(--gt-line)!important;}
+html[data-galaxy-theme][data-galaxy-black="1"] [class*="stream-container-"]:is(:hover,:focus-visible) {background:var(--gt-panel)!important;}
+html[data-galaxy-theme][data-galaxy-black="1"] [class*="metadetails-container-"] > [class*="background-image-layer-"] {background-image:linear-gradient(90deg,var(--gt-shade),transparent 70%),linear-gradient(0deg,var(--gt-bg),transparent 85%),var(--galaxy-detail-image,none)!important;}
+html[data-galaxy-theme][data-galaxy-black="1"][data-galaxy-player="1"] {background:transparent!important;}
+html[data-galaxy-theme][data-galaxy-black="1"] [data-galaxy-name] {color:var(--gt-text);text-shadow:0 0 18px var(--gt-accent);}
+html[data-galaxy-theme][data-galaxy-black="1"] .galaxy-nav-link[aria-current="page"] {background:var(--gt-overlay)!important;border-color:var(--gt-line)!important;}
+[data-galaxy-theme-panel] {padding:22px;margin:16px 0;border:1px solid var(--gt-line,#8760af66);border-radius:16px;background:var(--gt-panel,#151020);color:var(--gt-text,#eee9ff);scroll-margin-top:100px;}
+[data-galaxy-theme-panel] h2 {font-size:22px;margin:0 0 16px;}
+.galaxy-theme-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;}
+.galaxy-theme-card {appearance:none!important;cursor:pointer;display:flex;flex-direction:column;align-items:stretch;gap:9px;padding:10px;border:2px solid transparent;border-radius:12px;background:var(--gt-glass,#21162e);color:inherit;font:inherit;}
+.galaxy-theme-card[aria-pressed="true"] {border-color:var(--gt-accent,#a17bff);}
+.galaxy-theme-preview {height:64px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.galaxy-theme-preview i {width:17px;height:17px;border-radius:50%;}
+.galaxy-theme-actions {display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px;}
+.galaxy-theme-action,.galaxy-theme-menu {appearance:auto!important;cursor:pointer;padding:9px 16px;border-radius:10px;background:var(--gt-overlay,#6f4c9040);color:var(--gt-text,#eee9ff);border:1px solid var(--gt-line,#8760af66);font:inherit;}
+[data-galaxy-theme-editor] {margin-top:16px;padding:16px;border:1px solid var(--gt-line,#8760af66);border-radius:12px;}
+[data-galaxy-theme-editor] label {display:flex;align-items:center;justify-content:space-between;gap:14px;margin:12px 0;max-width:440px;}
+[data-galaxy-theme-editor] input {appearance:auto!important;position:static!important;opacity:1!important;visibility:visible!important;display:inline-block!important;}
+[data-galaxy-theme-editor] input[type="color"] {width:52px;height:32px;cursor:pointer;}
+[data-galaxy-theme-editor] input[type="text"] {width:230px;padding:8px;border:1px solid var(--gt-line,#8760af66);border-radius:8px;background:var(--gt-bg,#080410);color:var(--gt-text,#fff);font:inherit;}
+[data-galaxy-theme-editor] input[type="checkbox"] {width:18px;height:18px;accent-color:var(--gt-accent,#a17bff);}
+[data-galaxy-theme-panel] [role="status"] {min-height:1.4em;margin-top:12px;}
+[data-galaxy-theme-panel] [hidden] {display:none!important;}
+[data-galaxy-theme-panel] :is(button,input):focus-visible {outline:2px solid var(--gt-accent,#a17bff);outline-offset:3px;}

@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Personal Anime Skip Button",
+  "version": "1.4.0",
+  "description": "A local clickable opening skip button for Stremio Community. No network or data collection.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stremio.zarg.me/*",
+        "https://zaarrg.github.io/stremio-web-shell-fixes/*",
+        "https://web.stremio.com/*"
+      ],
+      "js": [
+        "song-config.js",
+        "locale.js",
+        "button.js",
+        "segments.js",
+        "next-logic.js",
+        "next-source.js",
+        "next.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ]
+}

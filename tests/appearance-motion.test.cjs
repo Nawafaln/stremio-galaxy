@@ -1,0 +1,30 @@
+// Stremio Galaxy modification, GPL-3.0. Opposite-pointer motion and resets.
+const {JSDOM}=require('./hover-runtime/node_modules/jsdom');
+const {readFileSync}=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const source=readFileSync(path.join(__dirname,'../assets/appearance.js'),'utf8');
+const wait=()=>new Promise(resolve=>setTimeout(resolve,45));
+(async()=>{
+ const dom=new JSDOM('<!doctype html><html><body></body></html>',{url:'https://web.stremio.com/',runScripts:'outside-only',pretendToBeVisual:true});
+ const w=dom.window, preference={matches:false,addEventListener(){},removeEventListener(){}};
+ w.matchMedia=()=>preference;
+ w.eval(source.replace('__GALAXY_APPEARANCE_CONFIG__',JSON.stringify({name:'Stremio Galaxy',enabled:true,css:'/*fixture*/',allowedOrigins:[]})));
+ const layer=w.document.getElementById('galaxy-universe');
+ const move=(x,y)=>w.document.dispatchEvent(new w.MouseEvent('mousemove',{bubbles:true,clientX:x,clientY:y}));
+ move(w.innerWidth,w.innerHeight);await wait();
+ assert.equal(layer.style.getPropertyValue('--galaxy-pointer-x'),'-28px');
+ assert.equal(layer.style.getPropertyValue('--galaxy-pointer-y'),'-22px');
+ move(0,0);await wait();assert.equal(layer.style.getPropertyValue('--galaxy-pointer-x'),'28px');
+ assert.equal(layer.style.getPropertyValue('--galaxy-pointer-y'),'22px');
+ w.__galaxyAppearance.setEnabled(false);assert.equal(layer.style.getPropertyValue('--galaxy-pointer-x'),'0px');
+ move(w.innerWidth,w.innerHeight);await wait();assert.equal(layer.style.getPropertyValue('--galaxy-pointer-x'),'0px');
+ w.__galaxyAppearance.setEnabled(true);
+ w.history.replaceState(null,'','#/player/movie/tt0133093');w.dispatchEvent(new w.HashChangeEvent('hashchange'));
+ move(0,0);await wait();assert.equal(layer.style.getPropertyValue('--galaxy-pointer-x'),'0px');
+ w.history.replaceState(null,'','#/');w.dispatchEvent(new w.HashChangeEvent('hashchange'));
+ preference.matches=true;move(0,0);await wait();assert.equal(layer.style.getPropertyValue('--galaxy-pointer-x'),'0px');
+ preference.matches=false;move(0,0);await wait();
+ w.document.dispatchEvent(new w.MouseEvent('mouseout',{bubbles:true,relatedTarget:null}));
+ assert.equal(layer.style.getPropertyValue('--galaxy-pointer-x'),'0px');
+ w.__galaxyAppearance.destroy();dom.window.close();
+ console.log('PASS: inverse X/Y, bounded travel, disable reset, player suppression, reduced motion, pointer leave reset.');
+})().catch(error=>{console.error(error);process.exitCode=1;});

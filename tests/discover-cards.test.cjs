@@ -1,0 +1,22 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=process.cwd(),{JSDOM}=require(path.join(root,'tests/hover-runtime/node_modules/jsdom'));
+const script=fs.readFileSync('assets/galaxy-layout.js','utf8'),css=fs.readFileSync('assets/galaxy-layout.css','utf8'),wait=()=>new Promise(r=>setTimeout(r,100));
+const markup='<main class="discover-container-test"><div class="discover-content-test"><div class="catalog-container-test"><div class="selectable-inputs-container-test"><select><option>Movies</option></select></div><div class="meta-items-container-test"></div></div><aside class="meta-preview-container-test">Native preview</aside></div></main>';
+function card(w,id,name){const n=w.document.createElement('a');n.className='meta-item-container-test';n.href='#/detail/movie/'+id;n.innerHTML='<div class="poster-container-test"><img class="poster-image-test"></div><div class="title-bar-container-test"><span class="title-label-test">Old title</span><button class="menu-label-container-test">Menu</button></div>';n.__reactFiber$test={memoizedProps:{type:'movie',name,poster:'https://example.org/poster.jpg',deepLinks:{metaDetailsVideos:'#/detail/movie/'+id}}};return n}
+(async()=>{
+ const d=new JSDOM(markup,{url:'https://stremio.zarg.me/#/discover/movie/top',runScripts:'outside-only',pretendToBeVisual:true}),w=d.window;
+ w.__galaxyAppearance={};w.AbortSignal=AbortSignal;let lang='ara';w.core={getState:async()=>({profile:{settings:{interfaceLanguage:lang}}})};
+ w.fetch=async url=>({ok:true,json:async()=>({meta:{id:url.match(/(tt\d+)\.json/)[1],name:'Catalog title',releaseInfo:'2026',imdbRating:'7.1',genres:['Horror']}})});
+ const grid=w.document.querySelector('.meta-items-container-test'),filter=w.document.querySelector('select'),preview=w.document.querySelector('aside'),first=card(w,'tt1','Buddy');grid.append(first);let clicked=0,menu=0;first.addEventListener('click',e=>{e.preventDefault();clicked++});first.querySelector('button').onclick=e=>{e.preventDefault();e.stopPropagation();menu++};
+ w.eval(script.replace('__GALAXY_LAYOUT_CSS__',JSON.stringify(css)));await wait();
+ assert(w.document.documentElement.hasAttribute('data-galaxy-discover'));assert(grid.hasAttribute('data-galaxy-discover-grid'));
+ assert.equal(first.querySelectorAll('.galaxy-poster-details').length,1);assert(first.querySelector('.galaxy-poster-details').textContent.includes('7.1'));assert(first.querySelector('.galaxy-poster-details').textContent.includes('2026'));assert(first.querySelector('.galaxy-poster-genres').textContent.includes('Horror'));
+ first.click();first.querySelector('button').click();assert.equal(clicked,1);assert.equal(menu,1,'native menu and detail handlers are retained');
+ assert.equal(filter,w.document.querySelector('select'));assert.equal(preview,w.document.querySelector('aside'),'side preview remains mounted');assert(!w.document.querySelector('.galaxy-home-hero'));
+ const next=card(w,'tt2','Next title');grid.append(next);await wait();assert(next.hasAttribute('data-galaxy-poster'),'infinite-scroll additions are enhanced');
+ first.__reactFiber$test.memoizedProps.name='New filter title';first.href='#/detail/movie/tt3';await w.GalaxyLayout.refresh();await wait();assert.equal(first._galaxyMetadata.meta.id,'tt3','reused card tracks filter result');assert.equal(first.querySelectorAll('.galaxy-poster-details').length,1);
+ lang='eng';await w.GalaxyLayout.refresh();await wait();assert.equal(w.document.documentElement.dir,'ltr');assert.equal(first.querySelectorAll('.galaxy-poster-details').length,1);
+ w.location.hash='#/library';await w.GalaxyLayout.refresh();assert(!w.document.documentElement.hasAttribute('data-galaxy-discover'));assert(!grid.hasAttribute('data-galaxy-discover-grid'));assert(!first.querySelector('.galaxy-poster-details'),'route cleanup restores native cards');
+ w.location.hash='#/discover';await w.GalaxyLayout.refresh();await wait();assert.equal(first.querySelectorAll('.galaxy-poster-details').length,1,'return to cached Discover re-enhances cards');
+ w.GalaxyLayout.destroy();assert(!grid.hasAttribute('data-galaxy-discover-grid'));assert(!first.querySelector('.galaxy-poster-details'));d.window.close();console.log('PASS: shared Discover info strip, genuine rating/year/genres, native filters/preview/menu/detail actions, appended and recycled cards, RTL/LTR, route cleanup and return.');
+})().catch(e=>{console.error(e);process.exitCode=1});

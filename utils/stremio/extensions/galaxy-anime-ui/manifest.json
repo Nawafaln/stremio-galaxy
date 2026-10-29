@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Galaxy Anime interface",
+  "version": "1.4.0",
+  "description": "Local Galaxy Anime setup and UI-language synopsis. Ready-made localized metadata via AIO Metadata; no machine translation or account access.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stremio.zarg.me/*",
+        "https://zaarrg.github.io/stremio-web-shell-fixes/*",
+        "https://web.stremio.com/*"
+      ],
+      "js": [
+        "language.js",
+        "filters-config.js",
+        "genre-filter.js",
+        "year-filter.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+<!doctype html><html lang="ar"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Galaxy detail layout — local fixture</title><style>html,body{margin:0;height:100%;font:16px Arial,sans-serif;color:#fff;background:radial-gradient(ellipse at 80% 20%,#3a204b,transparent 55%),linear-gradient(125deg,#0c0816,#171528)}*{box-sizing:border-box}.metadetails-container-fixture{height:100vh;display:flex;flex-direction:column}.nav{padding:18px 4vw;background:#0a0712aa;color:#c2a6e6}.metadetails-content-fixture{flex:1;display:flex;min-height:0}.meta-preview-fixture h1{font:56px Georgia,serif;letter-spacing:4px;margin:18px 0 26px}.meta-preview-fixture p{max-width:850px;line-height:1.8;color:#e3dbe9}.pills{display:flex;gap:12px;margin:22px 0}.pills span,.action{padding:10px 22px;border-radius:24px;background:#2f2145}.action{border:1px solid #755b96;color:white;display:inline-block;margin-top:12px}</style><body><div class="metadetails-container-fixture"><div class="nav">‹ &nbsp; Stremio Galaxy <span style="float:right">LOCAL DESIGN FIXTURE</span></div><div class="metadetails-content-fixture"><div class="meta-preview-fixture"><h1>MOUSETRAP</h1><b>57 min &nbsp; · &nbsp; 2026 &nbsp; · &nbsp; ⭐ 7.0</b><div class="pills"><span>Crime</span><span>Drama</span><span>Mystery</span></div><p>A reclusive writer wakes to find his identity stolen — and must ally with a ruthless loan shark to reclaim his life from a man known as “The Rat.”</p><span class="action">＋ Add to Library</span></div><div class="streams-list-container-fixture">Original servers fallback</div></div></div><script>window.__galaxyAppearance={};const model={"metaItem":{"content":{"type":"Ready","content":{"id":"tt123","type":"series","name":"MOUSETRAP","videos":[{"id":"tt123:1:1","season":1,"episode":1,"title":"Episode 1","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A1"}},{"id":"tt123:1:2","season":1,"episode":2,"title":"Episode 2","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A2"}},{"id":"tt123:1:3","season":1,"episode":3,"title":"Episode 3","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A3"}},{"id":"tt123:1:4","season":1,"episode":4,"title":"Episode 4","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A4"}},{"id":"tt123:1:5","season":1,"episode":5,"title":"Episode 5","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A5"}},{"id":"tt123:1:6","season":1,"episode":6,"title":"Episode 6","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A6"}},{"id":"tt123:1:7","season":1,"episode":7,"title":"Episode 7","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A7"}},{"id":"tt123:1:8","season":1,"episode":8,"title":"Episode 8","released":"2026-08-28","deepLinks":{"metaDetailsStreams":"#/detail/series/tt123/tt123%3A1%3A8"}}]}}},"selected":{"metaPath":{"id":"tt123"},"streamPath":{"id":"tt123:1:1"}},"streams":[{"addon":{"transportUrl":"fixture","manifest":{"name":"Galaxy provider"}},"content":{"type":"Ready","content":[{"name":"Galaxy 4K","description":"4K · 2.85 GB","seeders":140,"audioLanguages":["Japanese"],"subtitles":[{"lang":"Arabic"},{"lang":"English"},{"lang":"French"}],"deepLinks":{"player":"#/player/fixture0"}},{"name":"Galaxy 1080p","description":"1080p · 1.35 GB","seeders":87,"audioLanguages":["Japanese"],"subtitles":[{"lang":"Arabic"},{"lang":"English"}],"deepLinks":{"player":"#/player/fixture1"}},{"name":"Community 1080p","description":"1080p · 1.20 GB","seeders":43,"deepLinks":{"player":"#/player/fixture2"}},{"name":"Known single subtitle","description":"720p · 800 MB","subtitles":[{"lang":"English"}],"deepLinks":{"player":"#/player/fixture3"}}]}}]};for(const v of model.metaItem.content.content.videos)v.thumbnail=(n=>'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><defs><linearGradient id="g"><stop stop-color="#47335f"/><stop offset="1" stop-color="#122837"/></linearGradient></defs><rect width="640" height="360" fill="url(#g)"/><circle cx="450" cy="160" r="100" fill="#88649c" opacity=".35"/><path d="M0 360L220 100L400 360" fill="#13172b"/><text x="30" y="320" fill="#d1b5ed" font-family="sans-serif" font-size="32">EPISODE ${n}</text></svg>`))(v.episode);window.core={getState:async name=>name==='meta_details'?model:{profile:{settings:{interfaceLanguage:'ara'}}}};</script><script>// Stremio Galaxy community modification, GPL-3.0.
+// Own the new rails only; React-owned lists stay mounted for original playback handlers.
+((css)=>{
+ 'use strict';
+ if(window.top!==window||!window.__galaxyAppearance||window.GalaxyDetailRails)return;
+ const q=(root,selector)=>root?.querySelector(selector);
+ const propsAt=(node,test)=>{
+  const key=node&&Object.keys(node).find(k=>k.startsWith('__reactFiber$')||k.startsWith('__reactInternalInstance$'));
+  for(let fiber=key&&node[key],i=0;fiber&&i<50;i++,fiber=fiber.return){
+   // Alternate can contain newer props during an upstream commit.
+   for(const f of [fiber,fiber.alternate])if(f?.memoizedProps&&test(f.memoizedProps))return f.memoizedProps;
+  }
+  return null;
+ };
+ const unique=items=>[...new Set(items)];
+ const languages=value=>{
+  if(value==null)return null;
+  if(!Array.isArray(value)&&typeof value!=='string')return null;
+  const values=Array.isArray(value)?value:value.split(/[,;|/]+/);
+  return unique(values.map(v=>typeof v==='string'?v.trim():v?.lang||v?.language||'').filter(v=>v&&!/^(unknown|und|undefined|multi|multiple|n\/a)$/i.test(v)));
+ };
+ const numeric=v=>v!==null&&v!==''&&Number.isFinite(Number(v))&&Number(v)>=0?Number(v):null;
+ function describe(stream){
+  const hints=stream.behaviorHints||{},text=[stream.name,stream.description,stream.title,hints.filename].filter(v=>typeof v==='string').join('\n');
+  const explicitQuality=String(stream.quality||hints.videoQuality||'');
+  const quality=explicitQuality.match(/\b(2160|1440|1080|720|480)(?:p)?\b/i)||(!/\b4k\b/i.test(explicitQuality)&&text.match(/\b(2160|1440|1080|720|480)p\b/i));
+  const resolution=quality?quality[1]+'p':/\b4k\b/i.test(text+' '+explicitQuality)?'2160p':null;
+  const size=typeof hints.videoSize==='number'?hints.videoSize:typeof stream.size==='number'?stream.size:null;
+  const sizeText=size!==null?(size/1024**3).toFixed(2)+' GB':text.match(/\b\d+(?:[.,]\d+)?\s*(?:GiB|MiB|GB|MB)\b/i)?.[0]||null;
+  let seeds=numeric(stream.seeders??hints.seeders);
+  if(seeds===null){const match=text.match(/(?:👤|👥|\bseeders?\s*[:=]?)\s*(\d+(?:[.,]\d+)?\s*[kKmM]?)/iu);if(match){const n=match[1].replace(/\s/g,'').replace(',','.');seeds=parseFloat(n)*(/k$/i.test(n)?1000:/m$/i.test(n)?1000000:1)}}
+  const audio=languages(stream.audioLanguages??hints.audioLanguages??stream.audio?.languages);
+  const explicitAudio=text.match(/(?:^|\n)\s*(?:🎧|🔊)?\s*(?:audio(?:\s+languages?)?|الصوت)\s*[:：]\s*([^\n]+)/i);
+  const explicitSubs=text.match(/(?:^|\n)\s*(?:💬|📝|🔤)?\s*(?:subtitles?(?:\s+languages?)?|subs|الترجم(?:ة|ات))\s*[:：]\s*([^\n]+)/i);
+  let subs=languages(stream.subtitleLanguages??hints.subtitleLanguages),count=null;
+  const tracks=Array.isArray(stream.subtitles)?stream.subtitles:Array.isArray(hints.subtitles)?hints.subtitles:null;
+  if(tracks!==null){subs=languages(tracks);count=tracks.length===0?0:subs.length?subs.length:tracks.length}
+  else if(subs!==null)count=subs.length||null;
+  else if(explicitSubs){const v=explicitSubs[1].trim();if(/^(none|no subtitles|0|لا توجد|بدون ترجمة)$/i.test(v)){subs=[];count=0}else{subs=languages(v);count=subs?.length||null}}
+  // Only an explicit complete empty language list establishes no subtitles.
+  if(Array.isArray(stream.subtitleLanguages??hints.subtitleLanguages)&&(stream.subtitleLanguages??hints.subtitleLanguages).length===0)count=0;
+  const explicitCount=numeric(stream.subtitleCount??hints.subtitleCount);if(explicitCount!==null)count=explicitCount;
+  return {quality:resolution,size:sizeText,seeders:seeds,audio:audio||languages(explicitAudio?.[1]),subtitles:subs,subtitleCount:count};
+ }
+ const safeHref=value=>{if(typeof value!=='string')return null;try{const u=new URL(value,location.href);if(u.origin===location.origin&&/^#\/(?:detail|metadetails|player)\//.test(u.hash))return u.hash;if(/^https?:$/.test(u.protocol))return u.href}catch{}return null};
+ const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text!==undefined)n.textContent=text;return n};
+ let host,content,panel,style,timer,busy=false,dead=false,lastSignature='',route='',meta=null,model=null,ctxLanguage='',season=null,search='',filter={quality:'',provider:'',audio:'',subtitles:'',multi:true};
+ const ar=()=>/^(ar|ara)(?:-|_|$)/i.test(ctxLanguage||document.documentElement.lang||navigator.language);
+ const t=(en,arabic)=>ar()?arabic:en;
+ function transport(root){
+  if(window.core)return window.core.transport||window.core;
+  for(const node of [root,...Array.from(root?.querySelectorAll('*')||[]).slice(0,180)]){
+   const key=node&&Object.keys(node).find(k=>k.startsWith('__reactFiber$'));
+   for(let f=key&&node[key],i=0;f&&i<50;i++,f=f.return)for(let d=f.dependencies?.firstContext,j=0;d&&j<20;j++,d=d.next){const value=d.memoizedValue;if(value?.core?.transport)return value.core.transport;if(value?.transport?.getState)return value.transport}
+  }
+  return null;
+ }
+ function select(label,values,value,onChange){
+  const wrap=el('label',null,label),input=el('select');input.dataset.galaxyFocus='select-'+label;
+  for(const [key,title] of values){const option=el('option',null,title);option.value=String(key);input.append(option)}
+  input.value=String(value);input.addEventListener('change',()=>onChange(input.value));wrap.append(input);return wrap;
+ }
+ function railSection(title){
+  const section=el('section'),heading=el('div','galaxy-rail-heading'),controls=el('div','galaxy-rail-controls'),rail=el('div','galaxy-detail-rail');
+  const h=el('h2',null,title);heading.append(h,controls);section.append(heading,rail);
+  rail.setAttribute('role','region');rail.setAttribute('aria-label',title);
+  for(const [sign,direction,label] of [['‹',-1,t('Scroll left','تمرير لليسار')],['›',1,t('Scroll right','تمرير لليمين')]]){const button=el('button',null,sign);button.type='button';button.setAttribute('aria-label',label);button.onclick=()=>rail.scrollBy({left:direction*rail.clientWidth*.8,behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});controls.append(button)}
+  return {section,heading,controls,rail};
+ }
+ function activateStream(event,stream){
+  // Use the matching upstream link when present, preserving analytics/external-player handling.
+  const href=stream.deepLinks?.player;
+  const original=Array.from(host.querySelectorAll('[class*="stream-container-"]')).find(n=>propsAt(n,p=>p.deepLinks?.player===href&&href));
+  if(original&&event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey){event.preventDefault();original.click()}
+ }
+ function render(groups,video){
+  const focused=document.activeElement,focusId=panel?.contains(focused)?focused.dataset.galaxyFocus:null;
+  const left=panel?.querySelector('[data-episodes]')?.scrollLeft||0,right=panel?.querySelector('[data-servers]')?.scrollLeft||0;
+  const fresh=el('div','galaxy-detail-rails');fresh.dir='ltr';
+  const unknown=t('Unknown','غير معروف'),videos=Array.isArray(meta?.videos)?meta.videos:[];
+  if(videos.length>0&&(meta.type==='series'||videos.length>1)){
+   const row=railSection(t('Episodes','الحلقات')),seasons=unique(videos.map(v=>v.season).filter(Number.isFinite)).sort((a,b)=>a-b);
+   if(!seasons.includes(season))season=video?.season??seasons.find(n=>n>0)??seasons[0]??null;
+   if(seasons.length)row.controls.prepend(select(t('Season','الموسم'),seasons.map(n=>[n,String(n)]),season,v=>{season=Number(v);render(groups,video)}));
+   const input=el('input');input.type='search';input.dataset.galaxyFocus='episode-search';input.placeholder=t('Search episodes','بحث الحلقات');input.setAttribute('aria-label',input.placeholder);input.value=search;
+   input.oninput=()=>{search=input.value;const start=input.selectionStart;render(groups,video);const next=panel.querySelector('input[type="search"]');next?.focus();try{next?.setSelectionRange(start,start)}catch{}};
+   row.controls.prepend(input);row.rail.dataset.episodes='';
+   const visible=videos.filter(v=>(season===null||v.season===season)&&(!search||(v.title||'').toLowerCase().includes(search.toLowerCase())||String(v.episode)===search)).sort((a,b)=>(a.episode||0)-(b.episode||0));
+   for(const v of visible){
+    const href=safeHref(v.deepLinks?.metaDetailsStreams);const card=el(href?'a':'div','galaxy-episode-card');if(href)card.href=href;
+    if(v.id===video?.id)card.setAttribute('aria-current','true');
+    let image;if(typeof v.thumbnail==='string'&&/^https?:\/\//.test(v.thumbnail)){image=el('img','galaxy-episode-image');image.src=v.thumbnail;image.loading='lazy';image.alt=v.title||'';image.onerror=()=>{const fallback=el('div','galaxy-episode-image galaxy-episode-placeholder',t('No image','لا توجد صورة'));image.replaceWith(fallback)}}else image=el('div','galaxy-episode-image galaxy-episode-placeholder',t('No image','لا توجد صورة'));
+    const copy=el('div','galaxy-episode-copy');copy.append(el('strong',null,`${Number.isFinite(v.episode)?v.episode+'. ':''}${v.title||t('Episode','حلقة')}`));
+    const released=new Date(v.released);copy.append(el('small',null,[Number.isFinite(v.season)?'S'+v.season:null,!isNaN(released)?released.toLocaleDateString(ar()?'ar':'en'):null,v.watched?t('Watched','تمت المشاهدة'):null].filter(Boolean).join(' · ')));
+    card.append(image,copy);row.rail.append(card);
+   }
+   if(!visible.length)row.rail.append(el('p','galaxy-rails-status',t('No episodes match your search.','لا توجد حلقات مطابقة للبحث.')));
+   fresh.append(row.section);
+  }
+  const row=railSection(t('Servers','السيرفرات'));row.rail.dataset.servers='';
+  const entries=[];let loading=0,errors=0;
+  for(const group of groups||[]){if(group.content?.type==='Loading')loading++;if(group.content?.type==='Err')errors++;if(group.content?.type!=='Ready'||!Array.isArray(group.content.content))continue;for(const stream of group.content.content)entries.push({stream,provider:group.addon?.manifest?.name||unknown,providerId:group.addon?.transportUrl||group.addon?.manifest?.name||unknown,details:describe(stream)})}
+  const filters=el('div','galaxy-server-filters'),all=t('All','الكل');
+  const options=key=>[['',all],...unique(entries.flatMap(e=>key==='provider'?e.providerId:key==='quality'?[e.details.quality].filter(Boolean):e.details[key]||[])).map(v=>[v,key==='provider'?entries.find(e=>e.providerId===v).provider:v])];
+  for(const [key,label] of [['quality',t('Quality','الجودة')],['provider',t('Provider','المصدر')],['audio',t('Audio','الصوت')],['subtitles',t('Subtitles','الترجمة')]])filters.append(select(label,options(key),filter[key],v=>{filter[key]=v;render(groups,video)}));
+  const multi=el('input');multi.type='checkbox';multi.dataset.galaxyFocus='multi';multi.checked=filter.multi;multi.onchange=()=>{filter.multi=multi.checked;render(groups,video)};const multiLabel=el('label');multiLabel.append(multi,document.createTextNode(t('Hide confirmed 0–1 subtitles','إخفاء المؤكد: صفر أو ترجمة واحدة')));filters.append(multiLabel);
+  row.section.insertBefore(filters,row.rail);
+  const visible=entries.filter(e=>(!filter.multi||e.details.subtitleCount===null||e.details.subtitleCount>1)&&(!filter.quality||e.details.quality===filter.quality)&&(!filter.provider||e.providerId===filter.provider)&&(!filter.audio||e.details.audio?.includes(filter.audio))&&(!filter.subtitles||e.details.subtitles?.includes(filter.subtitles)));
+  const ranked=visible.filter(e=>safeHref(e.stream.deepLinks?.player)).slice().sort((a,b)=>(b.details.seeders??-1)-(a.details.seeders??-1)||(parseInt(b.details.quality)||0)-(parseInt(a.details.quality)||0));const best=ranked[0];
+  for(const entry of visible){
+   const {stream,provider,details:d}=entry,href=safeHref(stream.deepLinks?.player),card=el(href?'a':'div','galaxy-server-card');
+   if(href){card.href=href;card.addEventListener('click',event=>activateStream(event,stream))}
+   if(entry===best){card.dataset.best='';const badge=el('span','galaxy-server-badge',t('★ Best result','★ أفضل نتيجة'));badge.title=t('Highest reported Seeders, then quality; availability may vary.','حسب أعلى Seeders معلن، ثم الجودة؛ قد يختلف التوفر.');card.append(badge)}
+   card.append(el('h3',null,[meta?.name,video?`${Number.isFinite(video.season)?'S'+video.season:''}${Number.isFinite(video.episode)?'E'+video.episode:''} ${video.title||''}`:null].filter(Boolean).join(' · ')||stream.name||provider));
+   const source=el('div','galaxy-server-source',[provider,stream.name,stream.description||stream.title].filter(Boolean).join(' · '));source.title=source.textContent;card.append(source);
+   const stats=el('div','galaxy-server-stats');for(const value of ['📺 '+(d.quality||unknown),'💾 '+(d.size||unknown),'👥 '+(d.seeders===null?'Seeders: '+unknown:d.seeders.toLocaleString()+' Seeders')])stats.append(el('span',null,value));card.append(stats);
+   const langs=el('div','galaxy-server-languages');langs.append(el('div','galaxy-server-audio','🎧 '+t('Audio: ','الصوت: ')+(d.audio?.length?d.audio.join(' · '):unknown)),el('div','galaxy-server-subtitles','💬 '+t('Subtitles: ','الترجمة: ')+(d.subtitles?.length?d.subtitles.join(' · '):d.subtitleCount===0?t('None','لا توجد'):unknown)));card.append(langs,el('span','galaxy-server-play',href?t('▶ Play','▶ تشغيل'):t('Playback link unavailable','رابط التشغيل غير متاح')));row.rail.append(card);
+  }
+  if(!visible.length)row.rail.append(el('p','galaxy-rails-status',loading?t('Loading servers…','جارٍ تحميل السيرفرات…'):entries.length?t('No servers match. Change filters to show more.','لا توجد نتائج مطابقة. غيّر الفلاتر لعرض المزيد.'):video?t('No servers available for this episode.','لا تتوفر سيرفرات لهذه الحلقة.'):t('Select an episode to load its servers.','اختر حلقة لعرض السيرفرات.')));
+  const status=el('p','galaxy-rails-note',`${visible.length} / ${entries.length} · `+t('Unknown subtitle information stays visible. Best result uses reported Seeders, then quality.','تبقى بيانات الترجمة المجهولة ظاهرة. أفضل نتيجة حسب Seeders المعلن ثم الجودة.')+(loading?' · '+t('More providers loading…','جارٍ تحميل مصادر أخرى…'):'')+(errors?' · '+t('Some providers failed to load.','تعذر تحميل بعض المصادر.'):''));status.setAttribute('role','status');row.section.append(status);fresh.append(row.section);
+  if(panel)panel.replaceWith(fresh);else content.append(fresh);panel=fresh;
+  if(focusId)Array.from(panel.querySelectorAll('[data-galaxy-focus]')).find(n=>n.dataset.galaxyFocus===focusId)?.focus({preventScroll:true});
+  if(ar()){for(const item of panel.querySelectorAll('h2,h3,.galaxy-rails-note,.galaxy-rails-status'))item.dir='auto'}
+  const episodeRail=panel.querySelector('[data-episodes]');if(episodeRail)episodeRail.scrollLeft=left;row.rail.scrollLeft=right;
+ }
+ function clear(){panel?.remove();panel=null;host?.removeAttribute('data-galaxy-rails');host?.querySelectorAll('[data-galaxy-native-hidden]').forEach(n=>n.removeAttribute('data-galaxy-native-hidden'));host=content=null;lastSignature=''}
+ async function refresh(){
+  if(busy||dead)return;busy=true;
+  try{
+   const match=location.hash.match(/^#\/(?:detail|metadetails)\/([^/]+)\/([^/?]+)/),key=match?match[1]+'/'+match[2]:'';
+   if(!key||match[1]==='tv'){clear();route='';meta=model=null;return}
+   if(key!==route){clear();route=key;meta=model=null;season=null;search='';filter={quality:'',provider:'',audio:'',subtitles:'',multi:true}}
+   const currentHash=location.hash,root=document.querySelector('[class*="metadetails-container-"]'),body=q(root,'[class*="metadetails-content-"]');if(!root||!body){clear();return}
+   if(host!==root||content!==body){clear();host=root;content=body}
+   const videosNode=q(root,'[class*="videos-list-container-"]'),streamsNode=q(root,'[class*="streams-list-container-"]'),vp=propsAt(videosNode,p=>p.metaItem!==undefined&&p.seasonOnSelect),sp=propsAt(streamsNode,p=>Array.isArray(p.streams));
+   const tr=transport(root);let snapshot=null;
+   if(tr?.getState){try{const results=await Promise.all([tr.getState('meta_details'),tr.getState('ctx')]);snapshot=results[0];ctxLanguage=results[1]?.profile?.settings?.interfaceLanguage||''}catch{}}
+   if(dead||currentHash!==location.hash||!root.isConnected)return;
+   const snapshotId=snapshot?.selected?.metaPath?.id;
+   if(snapshotId&&snapshotId===decodeURIComponent(match[2]))model=snapshot;
+   if(vp?.metaItem?.content?.type==='Ready')meta=vp.metaItem.content.content;
+   else if(model?.metaItem?.content?.type==='Ready')meta=model.metaItem.content.content;
+   if(!meta)return; // Upstream fallback remains fully usable when integration is unavailable.
+   const groups=sp?.streams||model?.streams||[],selectedId=model?.selected?.streamPath?.id;
+   const video=sp?.video||meta.videos?.find(v=>v.id===selectedId)||null;
+   if(season===null&&Number.isFinite(vp?.season))season=vp.season;
+   const signature=JSON.stringify([currentHash,meta,groups,video,ctxLanguage]);
+   if(signature!==lastSignature||!panel?.isConnected){lastSignature=signature;render(groups,video)}
+   host.setAttribute('data-galaxy-rails','');for(const node of [videosNode,streamsNode].filter(Boolean))node.setAttribute('data-galaxy-native-hidden','');
+  }catch(error){console.warn('[Galaxy detail rails]',error);clear()}finally{busy=false}
+ }
+ function start(){if(dead||timer)return;style=el('style');style.id='galaxy-detail-rails-style';style.textContent=css;document.documentElement.append(style);timer=setInterval(()=>{if(!document.hidden)void refresh()},800);void refresh()}
+ window.GalaxyDetailRails={refresh,describe,destroy(){dead=true;clearInterval(timer);window.removeEventListener('hashchange',refresh);document.removeEventListener('DOMContentLoaded',start);style?.remove();clear();delete window.GalaxyDetailRails}};
+ window.addEventListener('hashchange',refresh);if(document.documentElement)start();else document.addEventListener('DOMContentLoaded',start,{once:true});
+})("/* Stremio Galaxy community modification, GPL-3.0. */\n[data-galaxy-rails] [class*=\"metadetails-content-\"]{display:flex!important;flex-direction:column!important;overflow-y:auto!important;overflow-x:hidden!important;min-height:0;gap:0}\n[data-galaxy-rails] [class*=\"metadetails-content-\"]>[class*=\"meta-preview\"]{flex:none!important;width:100%!important;min-height:380px;max-height:none!important;padding:24px clamp(20px,4vw,64px) 32px!important;overflow:visible!important;box-sizing:border-box}\n[data-galaxy-rails] [class*=\"metadetails-content-\"]>[class*=\"spacing-\"]{display:none!important}\n[data-galaxy-rails] [data-galaxy-native-hidden]{display:none!important}\n.galaxy-detail-rails{flex:none;min-width:0;padding:0 clamp(20px,4vw,64px) 36px;box-sizing:border-box;color:#f5efff;font:inherit;direction:ltr}\n.galaxy-detail-rails section{margin-top:24px;min-width:0}\n.galaxy-rail-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}\n.galaxy-rail-heading h2{margin:0;font-size:22px;font-weight:700}\n.galaxy-rail-controls,.galaxy-server-filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}\n.galaxy-detail-rails :is(button,select,input){font:inherit;color:inherit;background:#21152fee;border:1px solid #a580db55;border-radius:10px;padding:9px 12px;box-sizing:border-box}\n.galaxy-detail-rails :is(button,a,select,input):focus-visible{outline:2px solid #c8a7ff;outline-offset:3px}\n.galaxy-detail-rails button{cursor:pointer}\n.galaxy-detail-rails button:hover{background:#513477}\n.galaxy-detail-rails input{max-width:220px}\n.galaxy-detail-rails label{display:flex;align-items:center;gap:8px;font-size:13px;color:#d4c3e9}\n.galaxy-server-filters{margin-bottom:14px}\n.galaxy-detail-rail{display:flex;flex-flow:row nowrap;direction:ltr;gap:16px;overflow-x:auto;overflow-y:hidden;padding:4px 3px 16px;scroll-snap-type:x proximity;scrollbar-color:#7954a9 #160f25;scrollbar-width:thin}\n.galaxy-episode-card{flex:0 0 224px;min-width:0;scroll-snap-align:start;text-decoration:none;color:inherit;border:1px solid #b190dd38;background:linear-gradient(130deg,#281735b3,#111126d9);border-radius:14px;overflow:hidden;transition:border-color .15s,background .15s}\n.galaxy-episode-card:hover,.galaxy-episode-card[aria-current]{border-color:#c09cff;background:#39234d}\n.galaxy-episode-image{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#241831}\n.galaxy-episode-placeholder{display:flex;align-items:center;justify-content:center;color:#c7a9e7}\n.galaxy-episode-copy{padding:12px;display:grid;gap:7px}\n.galaxy-episode-copy strong{font-size:14px;white-space:normal;line-height:1.4}\n.galaxy-episode-copy small{font-size:12px;color:#baaccd}\n.galaxy-server-card{flex:0 0 320px;min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;padding:18px;box-sizing:border-box;border:1px solid #a580db44;border-radius:16px;background:linear-gradient(135deg,#2b193cd9,#111429e8);color:inherit;text-decoration:none;position:relative}\n.galaxy-server-card:hover{border-color:#c19aff;background:linear-gradient(135deg,#392352,#1a1d37)}\n.galaxy-server-card[data-best]{border-color:#bc8cff;box-shadow:inset 0 0 0 1px #bc8cff44,0 0 20px #8f52d71c}\n.galaxy-server-badge{align-self:flex-start;font-size:12px;border-radius:20px;padding:5px 10px;background:#b388ff;color:#180c28;font-weight:700}\n.galaxy-server-card h3{font-size:16px;line-height:1.4;margin:0;overflow-wrap:anywhere}\n.galaxy-server-source{font-size:12px;color:#bdaece;white-space:pre-line;overflow-wrap:anywhere;max-height:4.2em;overflow:hidden}\n.galaxy-server-stats{display:flex;flex-wrap:wrap;gap:8px;font-size:13px}\n.galaxy-server-stats span{border-radius:7px;background:#ffffff0c;padding:6px 8px}\n.galaxy-server-languages{display:grid;gap:9px;font-size:13px;border-top:1px solid #c3a3ec24;padding-top:12px;line-height:1.6}\n.galaxy-server-audio{color:#9adbea}.galaxy-server-subtitles{color:#d6b5ff}\n.galaxy-server-play{margin-top:auto;font-size:13px;color:#d7bdff}\n.galaxy-rails-note{font-size:12px;line-height:1.6;color:#baaccd;margin:8px 0}\n.galaxy-rails-status{font-size:14px;color:#ddd0ed;line-height:1.6;padding:18px 0}\n@media(max-width:700px){[data-galaxy-rails] [class*=\"metadetails-content-\"]>[class*=\"meta-preview\"]{min-height:300px}.galaxy-server-card{flex-basis:280px}.galaxy-episode-card{flex-basis:190px}.galaxy-server-filters label{flex-wrap:wrap}.galaxy-server-filters select{max-width:210px}}\n@media(prefers-reduced-motion:reduce){.galaxy-episode-card{transition:none}.galaxy-detail-rail{scroll-behavior:auto}}\r\n");
+</script></body></html>

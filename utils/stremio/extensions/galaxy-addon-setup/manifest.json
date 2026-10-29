@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Galaxy optional addon setup",
+  "version": "1.0.0",
+  "description": "Optional installer-selected addon setup; user confirms additions in Stremio.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stremio.zarg.me/*",
+        "https://zaarrg.github.io/stremio-web-shell-fixes/*",
+        "https://web.stremio.com/*"
+      ],
+      "js": [
+        "selection.js",
+        "setup.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ]
+}

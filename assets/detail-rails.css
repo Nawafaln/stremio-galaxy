@@ -1,0 +1,168 @@
+/* Stremio Galaxy community modification, GPL-3.0.
+   Detail layout matched to the user's Mousetrap reference (1672 x 941). */
+[data-galaxy-rails]{--galaxy-rail-purple:#a477ff;--galaxy-rail-line:#7851ba55;--galaxy-rail-fg:#eee8fa}
+[data-galaxy-rails] [class*="metadetails-content-"]{display:flex!important;flex-direction:column!important;overflow-y:auto!important;overflow-x:hidden!important;min-height:0;gap:0;scrollbar-width:thin;scrollbar-color:#62468b transparent}
+[data-galaxy-rails] [class*="metadetails-content-"]>[class*="meta-preview"]{flex:1 0 auto!important;width:100%!important;min-height:440px;max-height:none!important;padding:0 clamp(30px,3.3vw,64px) 22px!important;overflow:visible!important;box-sizing:border-box}
+[data-galaxy-rails] [class*="meta-preview-container-"]>[class*="meta-info-container-"]{flex:0 0 auto!important;overflow:visible!important}
+[data-galaxy-rails] [class*="meta-info-container-"]>[class*="logo-"]{height:clamp(105px,12vh,144px)!important;max-width:min(550px,70vw)!important;margin-bottom:18px!important}
+[data-galaxy-rails] [class*="runtime-release-info-container-"]{margin-top:6px!important}
+[data-galaxy-rails] [class*="runtime-release-info-container-"] :is([class*="runtime-label-"],[class*="release-info-label-"]){font-size:17px!important;margin-right:36px!important}
+[data-galaxy-rails] [class*="meta-info-container-"]>[class*="meta-links-"]{margin-top:9px!important}
+[data-galaxy-rails] [class*="meta-info-container-"]>[class*="description-container-"]{font-size:14px!important;line-height:1.5!important;margin-top:12px!important;max-width:950px;max-height:85px;overflow:auto!important;scrollbar-width:thin}
+[data-galaxy-rails] [class*="meta-info-container-"] [class*="label-container-"]{font-size:12px!important;opacity:.5!important}
+[data-galaxy-rails] [class*="meta-preview-container-"]>[class*="action-buttons-container-"]{padding-top:20px!important;gap:14px!important;align-items:center!important}
+[data-galaxy-rails] [class*="action-buttons-container-"] :is([class*="action-button-"],[class*="group-container-"]){margin-bottom:0!important;margin-right:0!important}
+[data-galaxy-rails] [class*="action-button-container-"]{height:52px!important;min-width:52px!important;background:linear-gradient(135deg,#412364e8,#25153fe8)!important}
+[data-galaxy-rails] [class*="metadetails-content-"]>[class*="spacing-"]{display:none!important}
+[data-galaxy-rails] [data-galaxy-native-hidden]{display:none!important}
+html [data-galaxy-rails][class*="metadetails-container-"]>[class*="background-image-layer-"]{background-image:linear-gradient(90deg,rgba(5,4,15,.66),rgba(9,5,22,.12) 65%,rgba(5,3,15,.25)),linear-gradient(0deg,rgba(5,3,15,.93),rgba(5,3,15,.04) 75%),var(--galaxy-detail-image,none)!important;background-position:center 25%!important}
+.galaxy-detail-rails{flex:none;position:relative;min-width:0;margin:0 9px 8px;padding:16px 28px 10px;box-sizing:border-box;color:var(--galaxy-rail-fg,#eee8fa);font:inherit;direction:ltr;border:1px solid #7751b44d;border-radius:16px;background:linear-gradient(118deg,rgba(18,17,37,.91),rgba(19,10,35,.87) 65%,rgba(12,10,26,.95));box-shadow:inset 0 1px 2px #bd91ff16,0 -5px 35px #08051233;backdrop-filter:blur(22px)}
+.galaxy-detail-rails,.galaxy-detail-rails *{box-sizing:border-box}
+.galaxy-detail-rails section{min-width:0;position:relative}
+.galaxy-detail-rails section+section{border-top:1px solid #9565dc44;margin-top:12px;padding-top:12px}
+.galaxy-rail-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:32px;margin-bottom:10px}
+.galaxy-rail-title{display:flex;align-items:center;gap:24px;min-width:0}
+.galaxy-rail-heading h2{margin:0;font-size:20px;line-height:1.3;font-weight:600;color:#f7f2ff;white-space:nowrap}
+.galaxy-rail-controls,.galaxy-server-tabs{display:flex;gap:14px;align-items:center;flex:none}
+.galaxy-detail-rails :is(button,select,input){font:inherit;color:inherit;background:#251936bd;border:1px solid #a580db26;border-radius:9px;padding:7px 11px;box-sizing:border-box}
+.galaxy-detail-rails :is(button,a,select,input):focus-visible{outline:2px solid #d0acff;outline-offset:3px}
+.galaxy-detail-rails button{cursor:pointer}
+.galaxy-detail-rails button:hover{background:#513477}
+.galaxy-rail-controls button,.galaxy-filter-toggle{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%!important;padding:6px!important;background:linear-gradient(140deg,#2f2145,#21152f)!important;border-color:#a580db22!important}
+.galaxy-rail-controls button:hover,.galaxy-filter-toggle:hover{border-color:#be8cff99!important}
+.galaxy-rail-icon{display:inline-block;flex:none;width:17px;height:17px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.galaxy-rail-icon-play,.galaxy-rail-icon-users,.galaxy-rail-icon-crown,.galaxy-rail-icon-file{fill:currentColor;stroke-width:0}
+.galaxy-season{font-size:0!important;gap:0!important;flex:none}
+.galaxy-detail-rails .galaxy-season select{font-size:14px;background:transparent;border:0;padding:5px 22px 5px 0}
+.galaxy-detail-rails input{max-width:220px}
+.galaxy-detail-rails label{display:flex;align-items:center;gap:8px;font-size:13px;color:#d4c3e9}
+.galaxy-episode-search{display:none}
+.galaxy-detail-rails[data-filters-open] .galaxy-episode-search{display:block;width:165px;font-size:12px}
+.galaxy-server-info{display:flex;align-items:center;margin-left:-16px;color:#b6a8d0}
+.galaxy-server-tabs{gap:15px;margin-left:10px}
+.galaxy-server-tabs button{font-size:12px;line-height:1.2;padding:7px 16px;border-radius:25px;background:linear-gradient(145deg,#2c203cbb,#1d142cbb);color:#c9b9df}
+.galaxy-server-tabs button[aria-selected="true"]{color:#160d27;background:linear-gradient(135deg,#d2b9ff,#9f70f2);border-color:#b98cff;box-shadow:0 0 13px #a376ff77;font-weight:600}
+.galaxy-server-filters{position:absolute;left:0;bottom:calc(100% - 10px);max-width:100%;display:flex;flex-wrap:wrap;gap:14px;padding:18px;z-index:30;border:1px solid #9f78d866;border-radius:13px;background:#191125f5;box-shadow:0 12px 30px #0009;backdrop-filter:blur(20px)}
+.galaxy-server-filters[hidden]{display:none}
+.galaxy-detail-rail{display:flex;flex-flow:row nowrap;direction:ltr;align-items:stretch;gap:16px;overflow-x:auto;overflow-y:hidden;padding:2px 2px 1px;scroll-snap-type:x proximity;scrollbar-width:none;overscroll-behavior-x:contain}
+.galaxy-detail-rail::-webkit-scrollbar{display:none}
+.galaxy-episode-card{flex:0 0 clamp(145px,9.5vw,190px);min-width:0;position:relative;scroll-snap-align:start;text-decoration:none;color:inherit;background:none;border:0;outline-offset:3px}
+.galaxy-episode-art{position:relative;display:block;width:100%;aspect-ratio:1.92;border:1px solid #9a7cc044;border-radius:7px;overflow:hidden;background:#15101e}
+.galaxy-episode-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#191325}
+.galaxy-episode-placeholder{display:flex;align-items:center;justify-content:center;color:#a894c4;font-size:12px}
+.galaxy-episode-card:hover .galaxy-episode-art{border-color:#bf94ff}
+.galaxy-episode-card[aria-current] .galaxy-episode-art{border:2px solid #a97aff;box-shadow:0 0 0 1px #a375ec55,0 0 14px #9861eb55}
+.galaxy-episode-active{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);align-items:center;justify-content:center;width:38px;height:38px;border:3px solid #ac7bff;border-radius:50%;color:#c29dff;background:#21133c77}
+.galaxy-episode-card[aria-current] .galaxy-episode-active{display:flex}
+.galaxy-episode-active .galaxy-rail-icon{width:21px;height:21px;margin-left:2px}
+.galaxy-episode-copy{padding:6px 2px 0;display:grid;gap:3px}
+.galaxy-episode-copy strong{font-size:13px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4}
+.galaxy-episode-copy small{font-size:12px;color:#978aa9;line-height:1.3}
+.galaxy-server-card{flex:0 0 clamp(276px,18.5vw,340px);min-width:0;scroll-snap-align:start;display:grid;grid-template-columns:minmax(0,1fr) 40px;grid-template-rows:21px 24px 26px;gap:2px 8px;padding:9px 12px 8px;box-sizing:border-box;border:1px solid #7c57b52b;border-radius:10px;background:linear-gradient(130deg,#1b142bd9,#141022e6);color:inherit;text-decoration:none;position:relative;height:108px;align-content:center}
+.galaxy-server-card:hover{border-color:#a77be9;background:linear-gradient(135deg,#302040,#1b142d)}
+.galaxy-server-card[data-best]{border:2px solid #a171ff;padding:8px 11px 7px;box-shadow:inset 0 0 8px #9c6be444,0 0 12px #9e6bf24d}
+.galaxy-server-badge{position:absolute;left:-2px;top:-10px;display:flex;gap:5px;align-items:center;font-size:12px;line-height:1.15;border-radius:11px 0 13px 0;padding:5px 12px;background:linear-gradient(120deg,#b887ff,#8b62fb);box-shadow:0 0 12px #a575ff66;color:#130924;font-weight:600}
+.galaxy-server-badge .galaxy-rail-icon{width:14px;height:14px}
+.galaxy-detail-rail[data-servers]{padding-top:11px;padding-bottom:3px;margin-top:-2px}
+.galaxy-server-provider{grid-column:1;grid-row:1;display:flex;align-items:center;gap:7px;min-width:0;font-size:14px;font-weight:500;color:#d5c4ed;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.galaxy-server-provider .galaxy-rail-icon{width:14px;height:14px;color:#bfa3ec}
+.galaxy-server-stats{grid-column:1;grid-row:2;display:flex;align-items:center;gap:13px;min-width:0;font-size:12px;white-space:nowrap;color:#c3b7d6}
+.galaxy-server-stats span{display:flex;align-items:center;gap:5px;min-width:0}
+.galaxy-server-quality{background:#342246;border:1px solid #9771bd33;border-radius:20px;padding:2px 9px;color:#f0e5ff;font-size:12px}
+.galaxy-server-stats .galaxy-server-seeds{color:#65db5b}
+.galaxy-server-size .galaxy-rail-icon{color:#b6a1cf;width:15px;height:16px}
+.galaxy-server-languages{grid-column:1/-1;grid-row:3;display:flex;align-items:center;gap:13px;font-size:11px;min-width:0;overflow:hidden}
+.galaxy-server-audio,.galaxy-server-subtitles{display:flex;align-items:center;gap:5px;white-space:nowrap;color:#d8c7ef;min-width:0}
+.galaxy-server-audio{border:1px solid #8c62bd4d;border-radius:16px;padding:2px 8px;background:#25193777}
+.galaxy-server-audio .galaxy-rail-icon{width:14px;height:14px}
+.galaxy-language-tag{display:inline-block;border:1px solid #a78dbe66;border-radius:7px;padding:2px 5px;line-height:1.2;font-size:10px;color:#e9dff8;max-width:90px;overflow:hidden;text-overflow:ellipsis}
+.galaxy-server-audio .galaxy-language-tag{border:0;padding:0;font-size:10px}
+.galaxy-server-subtitles>.galaxy-rail-icon{margin-right:2px;width:17px;height:17px}
+.galaxy-server-play{grid-column:2;grid-row:1/3;align-self:center;justify-self:end;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;color:#170a2e;background:linear-gradient(135deg,#b98cff,#9061ee);box-shadow:0 0 16px #a67bff55}
+.galaxy-server-play .galaxy-rail-icon{width:21px;height:21px;margin-left:2px}
+.galaxy-rails-note{display:none}
+.galaxy-rails-status{font-size:13px;color:#bbabce;line-height:1.6;padding:12px 0;margin:0}
+.galaxy-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(min-width:1100px) and (min-height:760px){
+ [data-galaxy-rails] [class*="metadetails-content-"]{overflow-y:hidden!important}
+ [data-galaxy-rails] [class*="metadetails-content-"]>[class*="meta-preview"]{flex:1 1 auto!important;min-height:0;overflow:auto!important;scrollbar-width:none;display:flex!important;flex-direction:column!important;justify-content:flex-start}
+ .galaxy-detail-rails{padding-top:16px;padding-bottom:10px}
+}
+@media(min-width:1800px) and (min-height:950px){.galaxy-detail-rails{padding:20px 32px 16px}.galaxy-rail-heading{margin-bottom:14px}.galaxy-episode-copy{padding-top:7px}.galaxy-detail-rails section+section{margin-top:16px;padding-top:15px}.galaxy-server-card{height:118px;grid-template-rows:24px 27px 27px}}
+@media(max-width:1099px),(max-height:759px){[data-galaxy-rails] [class*="metadetails-content-"]>[class*="meta-preview"]{min-height:450px}.galaxy-detail-rails{margin:0 8px 8px;padding:16px}.galaxy-rail-title{gap:14px;flex-wrap:wrap}.galaxy-server-tabs{margin-left:0;gap:8px}.galaxy-server-tabs button{padding:6px 12px}.galaxy-rail-heading{align-items:flex-start}.galaxy-episode-card{flex-basis:160px}.galaxy-server-card{flex-basis:300px}}
+@media(max-width:700px){.galaxy-rail-title{gap:12px}.galaxy-rail-heading h2{font-size:18px}.galaxy-server-tabs{order:3;flex-wrap:wrap}.galaxy-rail-heading{gap:8px}.galaxy-rail-controls{gap:8px}.galaxy-server-filters{bottom:calc(100% - 10px)}.galaxy-episode-card{flex-basis:150px}[data-galaxy-rails] [class*="meta-info-container-"]>[class*="logo-"]{height:90px!important}}
+@media(prefers-reduced-motion:reduce){.galaxy-detail-rail{scroll-behavior:auto}}
+
+/* Keep contrast and native actions correct even when an upstream theme restyles the backdrop. */
+html [data-galaxy-rails][class*="metadetails-container-"]>[class*="background-image-layer-"]{background-color:#170f29!important;position:fixed!important;inset:0!important;z-index:-1!important;pointer-events:none;background-size:contain!important;background-repeat:no-repeat!important}
+html [data-galaxy-rails][class*="metadetails-container-"]>[class*="background-image-layer-"]>img{opacity:.32!important;object-fit:cover!important}
+html [data-galaxy-rails][class*="metadetails-container-"]>[class*="background-image-layer-"][data-galaxy-detail-art]>img{display:none!important}
+html [data-galaxy-rails][class*="metadetails-container-"]{isolation:isolate;background:transparent!important}
+[data-galaxy-rails] [class*="meta-links-"] a{background:linear-gradient(135deg,#35234dde,#251936de)!important;border-radius:24px!important;color:#f3edff!important}
+.galaxy-detail-rails,.galaxy-detail-rails section,.galaxy-rail-heading,.galaxy-rail-title,.galaxy-server-card{overflow:visible}
+@media(min-width:1100px) and (min-height:760px){
+ [data-galaxy-rails] [class*="metadetails-content-"]>[class*="meta-preview"]{overflow:hidden!important}
+ [data-galaxy-rails] [class*="meta-preview-container-"]>[class*="meta-info-container-"]{flex:1 1 auto!important;min-height:0;overflow-y:auto!important;scrollbar-width:thin;scrollbar-color:#7b57a755 transparent}
+ [data-galaxy-rails] [class*="meta-preview-container-"]>[class*="action-buttons-container-"]{flex:none!important;padding-top:14px!important;overflow:visible!important}
+}
+/* Full artwork remains readable when providers supply a very bright backdrop. */
+html [data-galaxy-rails][class*="metadetails-container-"]>[class*="background-image-layer"]{filter:brightness(.72)!important}
+/* Torrent source information: preserve compact cards and keep details separate from playback. */
+.galaxy-server-entry{position:relative;flex:0 0 clamp(276px,18.5vw,340px);min-width:0;scroll-snap-align:start;overflow:visible}
+.galaxy-server-entry .galaxy-server-card{width:100%;height:130px;grid-template-rows:21px 24px 18px 26px;flex:none}
+.galaxy-server-entry .galaxy-server-provider{padding-right:23px}
+.galaxy-server-indexer{font-size:10px;color:#a797bd;overflow:hidden;text-overflow:ellipsis;max-width:90px;min-width:0}
+.galaxy-server-indexer::before{content:'· ';color:#746482}
+.galaxy-server-release{grid-column:1/-1;grid-row:3;font-size:10px;line-height:18px;color:#a99abc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:45px}
+.galaxy-server-entry .galaxy-server-languages{grid-row:4}
+.galaxy-server-entry .galaxy-server-play{grid-row:2/4}
+.galaxy-detail-rails button.galaxy-server-details{position:absolute;top:8px;right:11px;display:flex;align-items:center;justify-content:center;padding:2px;width:22px;height:22px;border:0;background:transparent;color:#b5a0d1;border-radius:50%;z-index:2}
+.galaxy-detail-rails button.galaxy-server-details:hover{color:#eee1ff;background:#68478c77}
+.galaxy-torrent-dialog{position:fixed;inset:0;width:min(720px,calc(100vw - 36px));max-height:80vh;margin:auto;padding:24px;border:1px solid #9871cf99;border-radius:16px;background:linear-gradient(135deg,#241733,#121020);box-shadow:0 20px 90px #000b;color:#eee6fa;font:14px/1.6 system-ui;overflow:auto;color-scheme:dark;box-sizing:border-box}
+.galaxy-torrent-dialog:not([open]){display:none}.galaxy-torrent-dialog[open]{display:block}
+.galaxy-torrent-dialog::backdrop{background:#08050fd9;backdrop-filter:blur(6px)}
+.galaxy-torrent-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:16px;overflow:visible}
+.galaxy-torrent-dialog h2{margin:0;font-size:20px;font-weight:600;color:#f1e6ff}
+.galaxy-torrent-close{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex:none;padding:0;border:1px solid #9d7dc855;border-radius:50%;background:#38234c;color:#eedfff;font:24px system-ui;cursor:pointer}
+.galaxy-torrent-work{color:#c9b2e2;margin:6px 0 18px;overflow-wrap:anywhere}
+.galaxy-torrent-rows{display:grid;grid-template-columns:minmax(130px,.7fr) minmax(0,2fr);gap:0 20px;margin:0;overflow:visible}
+.galaxy-torrent-rows dt,.galaxy-torrent-rows dd{padding:10px 0;margin:0;border-bottom:1px solid #a182c322;white-space:pre-wrap;overflow-wrap:anywhere}
+.galaxy-torrent-rows dt{color:#a992c3;font-size:12px}.galaxy-torrent-rows dd{color:#f0e9fa;user-select:text}
+.galaxy-torrent-explanation{font-size:12px;color:#b7a5c9;line-height:1.8;margin:18px 0 0}
+.galaxy-torrent-dialog :focus-visible{outline:2px solid #c59aff;outline-offset:3px}
+@media(min-width:1800px) and (min-height:950px){.galaxy-server-entry .galaxy-server-card{height:140px;grid-template-rows:24px 27px 18px 27px}}
+@media(max-width:1099px),(max-height:759px){.galaxy-server-entry{flex-basis:300px}}
+@media(max-width:600px){.galaxy-torrent-dialog{padding:18px}.galaxy-torrent-rows{grid-template-columns:1fr;gap:0}.galaxy-torrent-rows dt{padding:10px 0 0;border:0}.galaxy-torrent-rows dd{padding:2px 0 10px}}
+/* First paint already uses the detail dock; native sidebars never flash during model loading. */
+html[data-galaxy-detail-route="1"] [class*="metadetails-content-"]{display:flex!important;flex-direction:column!important;min-height:0;overflow-x:hidden!important}
+html[data-galaxy-detail-route="1"] [class*="metadetails-content-"]>[class*="spacing-"]{display:none!important}
+html[data-galaxy-detail-route="1"] [class*="metadetails-content-"]>:is([class*="videos-list-container-"],[class*="streams-list-container-"]){display:none!important}
+[data-galaxy-loading] [class*="metadetails-content-"]>[class*="meta-preview"]{display:none!important}
+.galaxy-detail-hero-loading{flex:1 1 auto;min-height:440px;padding:12px clamp(30px,3.3vw,64px) 24px;display:flex;flex-direction:column;gap:22px;box-sizing:border-box;overflow:hidden}
+.galaxy-loading-block{background:linear-gradient(115deg,#a883dc18,#bda4df2b,#a883dc18);border-radius:8px}
+.galaxy-loading-logo{width:min(390px,60vw);height:105px;flex:none;margin-bottom:8px}
+.galaxy-loading-meta{width:265px;height:20px;flex:none}.galaxy-loading-pills{width:350px;max-width:65vw;height:32px;flex:none}
+.galaxy-loading-summary{width:min(800px,70vw);height:52px;flex:none}.galaxy-loading-actions{width:480px;max-width:70vw;height:52px;flex:none;border-radius:28px;margin-top:auto}
+.galaxy-loading-caption{height:12px;width:75%;margin-top:8px;border-radius:4px}
+.galaxy-server-card>.galaxy-loading-caption{grid-column:1;align-self:center;margin:0}
+.galaxy-detail-rail[data-servers]{min-height:144px}
+.galaxy-detail-rails[data-loading] :is(.galaxy-episode-card,.galaxy-server-entry){pointer-events:none}
+@media(min-width:1100px) and (min-height:760px){.galaxy-detail-hero-loading{min-height:0}}
+@media(min-width:1800px) and (min-height:950px){.galaxy-detail-rail[data-servers]{min-height:154px}}
+/* React's Suspense fallback initially mounts only the navigation; fill that phase too. */
+.galaxy-detail-pending-content{display:flex;flex-direction:column;position:relative;flex:1;min-height:0;align-self:stretch;padding-top:var(--top-overlay-size,40px);margin-top:calc(-1 * var(--top-overlay-size,40px));overflow:hidden}
+/* Expected subtitle codes are visible in the subtitle row, separate from confirmed tracks. */
+.galaxy-server-subtitles[data-expected]{flex:1;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;max-width:100%;padding:2px 1px}
+.galaxy-server-subtitles[data-expected]::-webkit-scrollbar{display:none}
+.galaxy-server-subtitles .galaxy-language-tag{flex:none}
+.galaxy-language-expected{border-style:dashed;border-color:#c4a1f599;color:#d3b5f4}
+.galaxy-expected-marker{font-size:13px;color:#d6b9fb;flex:none}
+
+.galaxy-episode-image{object-position:center;background:radial-gradient(ellipse at 50% 35%,#2b1c42,#170f29 68%,#100b20)}
+
+/* Detail-page surfaces share the local nebula texture; artwork/layout stay native. */
+html[data-galaxy-black="1"] [data-galaxy-rails] .galaxy-detail-rails,
+html[data-galaxy-black="1"] [data-galaxy-rails] .galaxy-server-card {
+ background:var(--galaxy-information-background,linear-gradient(135deg,#170b36,#080616))!important;
+ background-size:cover!important;background-position:center 62%!important;background-repeat:no-repeat!important;
+}

@@ -1,0 +1,45 @@
+/* Stremio Galaxy modification, GPL-3.0. Top navigation stays available at every width. */
+[data-galaxy-nav-group]{display:none;}
+@media(min-width:0px){
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="vertical-nav-bar-container-"]{display:none!important;}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="nav-content-container-"]{left:0!important;right:0!important;width:auto!important;}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"]{
+  display:grid!important;grid-template-columns:64px minmax(180px,1fr) minmax(360px,auto) 152px;gap:10px;align-items:center;direction:ltr;padding:0 16px!important;box-sizing:border-box;width:100%;
+ }
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"] > [class*="logo-container-"]{grid-column:1;grid-row:1;width:auto!important;min-width:0;justify-content:center;}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"] > [class*="search-bar-container-"]{grid-column:2;grid-row:1;left:auto!important;right:auto!important;margin:0!important;width:100%!important;max-width:none!important;min-width:0;}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"] > [class*="buttons-container-"]{grid-column:4;grid-row:1;position:static!important;left:auto!important;right:auto!important;margin:0!important;width:auto!important;min-width:0;justify-content:flex-end;}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] [data-galaxy-nav-group]{display:flex;align-items:center;justify-content:center;gap:6px;grid-row:1;min-width:0;}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] [data-galaxy-nav-group="left"]{display:none!important;}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] [data-galaxy-nav-group="right"]{grid-column:3;direction:var(--galaxy-ui-direction,ltr);justify-content:flex-start;}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:7px 10px;min-width:42px;box-sizing:border-box;border:1px solid transparent;border-radius:10px;color:#b8a9cc;text-decoration:none;line-height:1.15;font:11px "Segoe UI",sans-serif;}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link svg{width:20px;height:20px;flex-shrink:0;}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link:is(:hover,[aria-current="page"]){color:#e8d9ff;background:rgba(150,103,229,.16);border-color:rgba(182,142,244,.25);}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link:focus-visible{outline:2px solid #bb9bff;outline-offset:2px;}
+}
+@media(min-width:760px) and (max-width:1100px){
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"]{grid-template-columns:48px minmax(160px,1fr) 240px 140px;gap:8px;padding:0 10px!important;}
+ html[data-galaxy-topnav="1"] .galaxy-nav-label{display:none;}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link svg{width:18px;height:18px;}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link{padding:7px;min-width:34px;}
+}
+
+/* Keep content below the measured header, including safe-area padding. */
+html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="nav-content-container-"]{top:var(--galaxy-header-height,calc(82px + env(safe-area-inset-top,0px)))!important;bottom:0!important}
+html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"]{padding-top:env(safe-area-inset-top,0px)!important;height:calc(82px + env(safe-area-inset-top,0px));}
+@media(max-width:759px){
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"]{grid-template-columns:48px minmax(0,1fr) auto!important;grid-template-rows:56px 56px;gap:0 8px;height:calc(112px + env(safe-area-inset-top,0px))!important;padding-inline:8px!important;direction:var(--galaxy-ui-direction,ltr)}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="horizontal-nav-bar-container-"] > [class*="buttons-container-"]{grid-column:3;grid-row:1}
+ html[data-galaxy-topnav="1"] [data-galaxy-nav-ready] [data-galaxy-nav-group="right"]{grid-column:1 / -1;grid-row:2;overflow-x:auto;max-width:100%;justify-content:space-evenly;gap:0}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link{flex:0 0 auto;padding:6px;min-width:40px;font-size:10px}
+ html[data-galaxy-topnav="1"] .galaxy-nav-link svg{width:18px;height:18px}
+ html[data-galaxy-topnav="1"] [data-galaxy-wordmark]{max-width:48px;overflow:hidden}
+ html[data-galaxy-topnav="1"] [data-galaxy-name]{font-size:9px!important;max-width:48px!important}
+ html[data-galaxy-home][data-galaxy-topnav="1"] [data-galaxy-nav-ready] > [class*="nav-content-container-"]{top:var(--galaxy-header-height,112px)!important}
+}
+
+/* Detail pages keep a direct, keyboard-accessible route back to Board. */
+#galaxy-detail-home{position:fixed;inset-block-start:calc(20px + env(safe-area-inset-top,0px));inset-inline-start:76px;z-index:40;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:0 14px;box-sizing:border-box;border:1px solid #af80e966;border-radius:12px;background:linear-gradient(135deg,#291542ed,#100b25ed);color:#f5edff;font:600 14px "Segoe UI",Tahoma,sans-serif;line-height:1.25;text-decoration:none;box-shadow:0 0 14px #8b3dff26;pointer-events:auto}
+#galaxy-detail-home svg{width:20px;height:20px;flex:none}
+#galaxy-detail-home:hover{background:#422169;color:#fff}
+#galaxy-detail-home:focus-visible{outline:2px solid #c8a4ff;outline-offset:3px}

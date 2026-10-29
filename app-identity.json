@@ -1,0 +1,13 @@
+{
+  "displayName": "Stremio Galaxy",
+  "version": "5.0.24",
+  "executable": "stremio-galaxy.exe",
+  "productId": "{EBA1A12B-6722-4D04-97AF-CA6C1A76FE5D}",
+  "appUserModelId": "StremioGalaxy.Desktop",
+  "windowClass": "StremioGalaxy.Window",
+  "mutex": "Local\\StremioGalaxy.Desktop.SingleInstance",
+  "installFolder": "StremioGalaxy",
+  "protocol": "stremio-galaxy",
+  "publisher": "Stremio Galaxy community fork",
+  "attribution": "Community fork of Zaarrg/stremio-community-v5. Original project and Stremio contributors retain their copyrights. Licensed under GPL-3.0. Not affiliated with official Stremio."
+}

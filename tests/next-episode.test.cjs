@@ -1,0 +1,30 @@
+// Galaxy GPL-3.0. Real UI data shapes; no account or network writes.
+const {JSDOM}=require('./hover-runtime/node_modules/jsdom'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const dir=path.join(__dirname,'../utils/stremio/extensions/personal-anime-skip');
+const logic=require(path.join(dir,'next-logic.js')),source=require(path.join(dir,'next-source.js'));
+const location={href:'https://stremio.zarg.me/#/player/current',origin:'https://stremio.zarg.me',pathname:'/'};
+const identity=source.identity({name:'Provider 1080p',behaviorHints:{bingeGroup:'group1'}},'https://provider/manifest.json');
+const make=(name,group,langs,url)=>({name,behaviorHints:{bingeGroup:group},subtitles:langs.map(lang=>({lang})),deepLinks:{player:'#/player/'+url}});
+const groups=[{addon:{transportUrl:'https://provider/manifest.json'},content:{type:'Ready',content:[make('Provider 1080p','other',['eng','fre','jpn'],'multi'),make('Provider 1080p','group1',[],'same'),make('Provider 720p','group1',['eng'],'wrong')]}}];
+const ranked=source.rank(groups,{quality:1080,source:identity,language:'en'},logic,location);assert.equal(ranked[0].hash,'#/player/same');assert.equal(ranked[1].hash,'#/player/multi');assert.equal(ranked.length,2);assert.equal(source.language('fre'),'fr');assert.equal(source.language('jpn'),'ja');
+assert.equal(source.same(identity,source.identity({name:'Provider 1080p',behaviorHints:{bingeGroup:'other'}},identity.base)),false);
+(async()=>{
+ const dom=new JSDOM('<div class="control-bar-container-fixture"></div>',{url:location.href,runScripts:'outside-only'});const w=dom.window;let clock=1000,tick;w.Date.now=()=>clock;w.setInterval=cb=>{tick=cb;return 1};w.clearInterval=()=>{};
+ const messages=[],handlers=new Set();w.chrome={webview:{postMessage:s=>messages.push(JSON.parse(s)),addEventListener:(_,f)=>handlers.add(f),removeEventListener:(_,f)=>handlers.delete(f)}};
+ w.core={getState:async model=>model==='player'?{selected:{streamRequest:{base:identity.base}}}:{profile:{settings:{interfaceLanguage:'eng'}}}};
+ const p={nextVideo:{deepLinks:{metaDetailsStreams:'#/detail/series/tt1/tt1:1:2'}},stream:{name:'Provider 1080p',behaviorHints:{bingeGroup:'group1'}}};w.document.querySelector('div').__reactFiber$test={memoizedProps:p};
+ for(const file of ['next-logic.js','next-source.js','next.js'])w.eval(fs.readFileSync(path.join(dir,file),'utf8'));await new Promise(setImmediate);
+ const prop=(name,data)=>{for(const f of handlers)f({data:JSON.stringify({object:'transport',args:['mpv-prop-change',{name,data}]})})};
+ prop('user-data/anime-loaded-video',{sequence:1,w:1920,h:1080});assert(w.document.documentElement.hasAttribute('data-galaxy-next-owner'),'original premature next popup suppressed only when Galaxy owns next');prop('sid',7);prop('track-list',[{id:7,type:'sub',lang:'fre',selected:true}]);
+ const panel=w.document.getElementById('galaxy-next-episode');assert.equal(panel.style.display,'none','no prompt while story or post-credits continues');
+ prop('user-data/anime-next-available',true);assert.equal(panel.style.display,'flex');panel.querySelector('button').click();assert.equal(w.location.hash,'#/detail/series/tt1/tt1:1:2','current detail route accepted');
+ const list=w.document.createElement('div');list.className='streams-list-container-fixture';list.__reactFiber$test={memoizedProps:{streams:groups,video:{id:'tt1:1:2'}}};w.document.body.appendChild(list);tick();assert.equal(w.location.hash,'#/player/same','same source first');
+ prop('user-data/anime-loaded-video',{sequence:2,w:1920,h:1080});prop('track-list',[{type:'sub',id:9,lang:'eng'}]);clock+=13000;tick();assert.equal(w.location.hash,'#/player/multi','reject source lacking selected French');
+ prop('user-data/anime-loaded-video',{sequence:3,w:1920,h:1080});prop('track-list',[{type:'sub',id:4,lang:'fra'},{type:'sub',id:5,lang:'eng'}]);
+ assert(messages.some(m=>m.args[0]==='mpv-set-prop'&&m.args[1][0]==='sid'&&m.args[1][1]==='4'),'preserves selected language using new file track ID');
+ assert(messages.some(m=>m.args[0]==='mpv-set-prop'&&m.args[1][0]==='pause'&&m.args[1][1]==='false'));
+ w.GalaxyNextEpisode.destroy();assert.equal(w.document.documentElement.hasAttribute('data-galaxy-next-owner'),false);assert.equal(handlers.size,0);dom.window.close();
+ const d2=new JSDOM('<div class="control-bar-container-fixture"></div>',{url:location.href,runScripts:'outside-only'});const v=d2.window;let now=0,step;v.Date.now=()=>now;v.setInterval=cb=>{step=cb;return 1};v.clearInterval=()=>{};const callbacks=new Set();v.chrome={webview:{postMessage(){},addEventListener:(_,fn)=>callbacks.add(fn),removeEventListener:(_,fn)=>callbacks.delete(fn)}};v.core=w.core;v.document.querySelector('div').__reactFiber$test={memoizedProps:p};for(const file of ['next-logic.js','next-source.js','next.js'])v.eval(fs.readFileSync(path.join(dir,file),'utf8'));await new Promise(setImmediate);const emit=(type,payload)=>{for(const fn of callbacks)fn({data:{object:'transport',args:[type,payload]}})};emit('mpv-prop-change',{name:'user-data/anime-loaded-video',data:{sequence:1,w:1920,h:1080}});
+ emit('mpv-prop-change',{name:'user-data/anime-next-available',data:false});now=100000;step();assert.equal(v.location.hash,'#/player/current','late post-credits scene must not start a countdown');emit('mpv-event-ended',{reason:'error'});step();assert.equal(v.document.getElementById('galaxy-next-episode').style.display,'none','error is not completion');emit('mpv-prop-change',{name:'eof-reached',data:true});step();assert.equal(v.document.getElementById('galaxy-next-episode').style.display,'flex','actual EOF enables next');v.document.querySelector('#galaxy-next-episode button:nth-child(2)').click();now+=20000;step();assert.equal(v.location.hash,'#/player/current','cancelled countdown never navigates');v.GalaxyNextEpisode.destroy();d2.window.close();
+ console.log('PASS: same-source preference, release-group distinction, quality guard, multilingual fallback, French preservation, post-credits gate, current route, real loaded-track validation and cleanup');
+})().catch(e=>{console.error(e);process.exitCode=1});

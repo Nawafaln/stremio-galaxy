@@ -1,0 +1,25 @@
+/* Stremio Galaxy community modification, GPL-3.0.
+ * Verified NavMenuContent.js: the section immediately following user-info
+ * contains only the fullscreen action. Hide it, plus the two route links.
+ * Scope to the account dropdown; top navigation remains available.
+ */
+[class*="nav-menu-container-"] > [class*="user-info-container-"] + [class*="nav-menu-section-"],
+[class*="nav-menu-container-"] [class*="nav-menu-option-container-"][href="#/settings"],
+[class*="nav-menu-container-"] [class*="nav-menu-option-container-"][href="#/addons"] {
+  display: none !important;
+}
+
+/* Open toward the viewport interior after the account button mirrors with the locale. */
+html[data-galaxy-topnav="1"] [class*="nav-menu-popup-label-"] > [class*="menu-container-"]{
+ left:auto!important;right:auto!important;inset-inline-start:auto!important;inset-inline-end:0!important;
+ max-width:calc(100vw - 32px);z-index:100;
+}
+html[data-galaxy-topnav="1"] [class*="nav-menu-container-"]{
+ width:min(22rem,calc(100vw - 32px));box-sizing:border-box;direction:var(--galaxy-ui-direction,ltr);text-align:start;
+}
+html[data-galaxy-topnav="1"] [class*="nav-menu-container-"] [class*="user-info-details-"]{
+ min-width:0;margin-left:0;margin-inline-start:1rem;overflow-wrap:anywhere;
+}
+html[data-galaxy-topnav="1"] [class*="nav-menu-option-container-"] [class*="icon-"]{
+ margin-right:0;margin-inline-end:1rem;
+}

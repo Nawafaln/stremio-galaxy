@@ -1,0 +1,15 @@
+# Localized display metadata
+
+The injected GalaxyMetadata service owns the normalized interface locale and reads the bundled TMDB API credential from assets/metadata-config.json. An optional override lives only in the WebView profile and can be managed in the advanced section at the bottom of Settings. The credential is not echoed in the settings form.
+
+Display integration covers Board, enhanced Home/Discover cards, and the shared native MetaPreview component used by Discover and detail pages. Only the title, synopsis and genre labels are localized; IDs, artwork, playback handlers, cast and directors remain native. The original metadata objects are not mutated. The original synopsis remains visible while a request is pending or offline. Localized titles replace an untranslated artwork logo in its existing title area.
+
+IMDb IDs resolve through TMDB find; tmdb: IDs bypass find. Kitsu IDs use the public Kitsu JSON:API and included mappings. MAL/AniList resolve through Kitsu mappings, not unsupported TMDB external-source values. Anime searches require exact normalized title, exact year, animation genre, expected media type and a unique candidate. Season mappings must validate against the Kitsu start year and resolve to the season endpoint. A parent-series synopsis is not accepted for a later or ambiguous anime season. Unknown mappings keep the Kitsu/original addon synopsis.
+
+Text cache keys include media type, original ID and normalized locale. Text, Kitsu snapshots and accepted/rejected matching results expire after seven days. Network failures are retried after a short backoff and are not persisted as seven-day failures. Requests are bounded to four concurrent lookups. Queued work for a previous locale is cancelled, and late responses cannot update the current locale. Language changes are applied without restarting the app.
+
+The old Galaxy Anime UI synopsis writer yields to the central service. The addon now always preserves its original synopsis rather than substituting a localization-error message or calling the former AIO translation path. Its catalog and playback IDs are unchanged.
+
+TMDB attribution and the approved logo from the official documentation are included in Settings. The logo is embedded for offline display. API information: https://developer.themoviedb.org/reference/find-by-id and https://developer.themoviedb.org/reference/tv-season-details. Attribution: https://developer.themoviedb.org/docs/faq. Kitsu API: https://kitsu.docs.apiary.io/.
+
+Validation: metadata-localization.test.cjs, metadata-integration.test.cjs, galaxy-layout.test.cjs, discover-cards.test.cjs, settings-dashboard.test.cjs, settings-language-switch.test.cjs, galaxy-anime.test.cjs and galaxy-anime-ui.test.cjs. Settings layout checked in ten AR/EN viewport cases from 390px to 1672px, including the advanced key field. Live Arabic lookups succeeded for The Matrix and Cowboy Bebop (direct Kitsu mappings). These checks do not replace final visual review in the user's running app.

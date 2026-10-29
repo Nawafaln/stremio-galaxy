@@ -1,0 +1,9 @@
+// Galaxy GPL-3.0. Real inspected summary DOM and profile locale shape.
+const {JSDOM}=require('./hover-runtime/node_modules/jsdom'),fs=require('node:fs'),assert=require('node:assert/strict');
+const script=fs.readFileSync(require('node:path').join(__dirname,'../utils/stremio/extensions/galaxy-anime-ui/language.js'),'utf8');
+(async()=>{
+ const d=new JSDOM('<div class="metadetails-container-fixture"><div class="description-container-fixture"><div class="label-container-fixture">SUMMARY</div>Original English</div></div>',{url:'https://web.stremio.com/#/detail/series/kitsu:1',runScripts:'outside-only'});let lang='ara',calls=[];const w=d.window;w.core={getState:async()=>({profile:{settings:{interfaceLanguage:lang}}})};w.fetch=async(url,opts)=>{calls.push({url,opts});return {ok:true,json:async()=>url.endsWith('/language')?{language:JSON.parse(opts.body).language}:{meta:{description:url.includes('lang=ar')?'نبذة عربية':'English synopsis'},galaxy:{status:url.includes('lang=ar')?'localized':'original'}}}};w.eval(script);await new Promise(setImmediate);await new Promise(setImmediate);
+ let span=w.document.querySelector('[data-galaxy-anime-synopsis]');assert.equal(span.textContent,'نبذة عربية');assert.equal(span.dir,'rtl');assert.equal(w.document.querySelector('[class*="label-container-"]').textContent,'SUMMARY');
+ lang='eng';await w.GalaxyAnimeUI.refresh();span=w.document.querySelector('[data-galaxy-anime-synopsis]');assert.equal(span.textContent,'English synopsis');assert(calls.some(c=>c.opts?.body==='{"language":"en"}'));
+ w.location.hash='#/settings';w.dispatchEvent(new w.HashChangeEvent('hashchange'));await new Promise(setImmediate);assert.equal(w.document.querySelector('[data-galaxy-anime-synopsis]'),null);w.GalaxyAnimeUI.destroy();d.window.close();console.log('PASS: live UI profile-language switch AR/EN, RTL, safe text, original summary label retained and navigation cleanup');
+})().catch(e=>{console.error(e);process.exitCode=1});

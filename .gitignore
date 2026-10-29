@@ -1,0 +1,39 @@
+# Stremio Galaxy generated/test-only files
+/generated/
+/out/
+/tests/hover-runtime/
+
+# Build payloads and user profiles must never enter the source repository.
+/dist/
+/cmake-build-*/
+/release-staging/
+/releases/
+
+/release-signing/
+
+# Stremio Galaxy private and temporary files
+/backups/
+/saved-user-data/
+/outputs/
+/work/
+/release-signing/
+/dist/
+/releases/
+/release-staging/
+/cmake-build-*/
+/generated/
+/out/
+
+# Local credentials and profiles
+**/private.pem
+**/.env
+**/.env.*
+**/portable_config/
+**/node_modules/
+
+# Editor backups and local copies
+*.backup
+*.backup-*
+*.bak
+*.before-*
+*.log

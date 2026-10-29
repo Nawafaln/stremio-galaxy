@@ -1,0 +1,250 @@
+[
+  {
+    "id": "Isekai",
+    "ar": "إيسيكاي (عالم آخر)"
+  },
+  {
+    "id": "Action",
+    "ar": "أكشن"
+  },
+  {
+    "id": "Adventure",
+    "ar": "مغامرة"
+  },
+  {
+    "id": "Comedy",
+    "ar": "كوميديا"
+  },
+  {
+    "id": "Drama",
+    "ar": "دراما"
+  },
+  {
+    "id": "Sci-Fi",
+    "ar": "خيال علمي"
+  },
+  {
+    "id": "Space",
+    "ar": "فضاء"
+  },
+  {
+    "id": "Mystery",
+    "ar": "غموض"
+  },
+  {
+    "id": "Magic",
+    "ar": "سحر"
+  },
+  {
+    "id": "Supernatural",
+    "ar": "خوارق طبيعية"
+  },
+  {
+    "id": "Police",
+    "ar": "شرطة"
+  },
+  {
+    "id": "Fantasy",
+    "ar": "فانتازيا"
+  },
+  {
+    "id": "Sports",
+    "ar": "رياضة"
+  },
+  {
+    "id": "Romance",
+    "ar": "رومانسية"
+  },
+  {
+    "id": "Cars",
+    "ar": "سيارات"
+  },
+  {
+    "id": "Slice of Life",
+    "ar": "شريحة من الحياة"
+  },
+  {
+    "id": "Racing",
+    "ar": "سباقات"
+  },
+  {
+    "id": "Horror",
+    "ar": "رعب"
+  },
+  {
+    "id": "Psychological",
+    "ar": "نفسي"
+  },
+  {
+    "id": "Thriller",
+    "ar": "إثارة"
+  },
+  {
+    "id": "Martial Arts",
+    "ar": "فنون قتالية"
+  },
+  {
+    "id": "Super Power",
+    "ar": "قوى خارقة"
+  },
+  {
+    "id": "School",
+    "ar": "مدرسي"
+  },
+  {
+    "id": "Ecchi",
+    "ar": "إيتشي"
+  },
+  {
+    "id": "Vampire",
+    "ar": "مصاصو دماء"
+  },
+  {
+    "id": "Historical",
+    "ar": "تاريخي"
+  },
+  {
+    "id": "Military",
+    "ar": "عسكري"
+  },
+  {
+    "id": "Dementia",
+    "ar": "تجريبي"
+  },
+  {
+    "id": "Mecha",
+    "ar": "ميكا"
+  },
+  {
+    "id": "Demons",
+    "ar": "شياطين"
+  },
+  {
+    "id": "Samurai",
+    "ar": "ساموراي"
+  },
+  {
+    "id": "Harem",
+    "ar": "حريم"
+  },
+  {
+    "id": "Music",
+    "ar": "موسيقى"
+  },
+  {
+    "id": "Parody",
+    "ar": "محاكاة ساخرة"
+  },
+  {
+    "id": "Shoujo Ai",
+    "ar": "شوجو آي"
+  },
+  {
+    "id": "Game",
+    "ar": "ألعاب"
+  },
+  {
+    "id": "Shounen Ai",
+    "ar": "شونين آي"
+  },
+  {
+    "id": "Kids",
+    "ar": "أطفال"
+  },
+  {
+    "id": "Hentai",
+    "ar": "هنتاي"
+  },
+  {
+    "id": "Yuri",
+    "ar": "يوري"
+  },
+  {
+    "id": "Yaoi",
+    "ar": "ياوي"
+  },
+  {
+    "id": "Anime Influenced",
+    "ar": "مستوحى من الأنمي"
+  },
+  {
+    "id": "Gender Bender",
+    "ar": "تبديل الأدوار الجندرية"
+  },
+  {
+    "id": "Doujinshi",
+    "ar": "دوجينشي"
+  },
+  {
+    "id": "Mahou Shoujo",
+    "ar": "فتيات ساحرات"
+  },
+  {
+    "id": "Mahou Shounen",
+    "ar": "فتيان سحرة"
+  },
+  {
+    "id": "Gore",
+    "ar": "دموي"
+  },
+  {
+    "id": "Law",
+    "ar": "قانون"
+  },
+  {
+    "id": "Cooking",
+    "ar": "طبخ"
+  },
+  {
+    "id": "Mature",
+    "ar": "للبالغين"
+  },
+  {
+    "id": "Medical",
+    "ar": "طبي"
+  },
+  {
+    "id": "Political",
+    "ar": "سياسي"
+  },
+  {
+    "id": "Tokusatsu",
+    "ar": "توكوساتسو"
+  },
+  {
+    "id": "Youth",
+    "ar": "شباب"
+  },
+  {
+    "id": "Workplace",
+    "ar": "مكان العمل"
+  },
+  {
+    "id": "Crime",
+    "ar": "جريمة"
+  },
+  {
+    "id": "Zombies",
+    "ar": "زومبي"
+  },
+  {
+    "id": "Documentary",
+    "ar": "وثائقي"
+  },
+  {
+    "id": "Family",
+    "ar": "عائلي"
+  },
+  {
+    "id": "Food",
+    "ar": "طعام"
+  },
+  {
+    "id": "Friendship",
+    "ar": "صداقة"
+  },
+  {
+    "id": "Tragedy",
+    "ar": "مأساة"
+  }
+]
