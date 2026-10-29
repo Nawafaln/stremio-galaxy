@@ -30,6 +30,39 @@ The installer currently has no Windows publisher certificate (Authenticode). Sig
 
 **Galaxy retains all interface languages available in Stremio**, including Arabic and English, with left-to-right and right-to-left layouts. Available translations follow the selected Stremio web interface. Some Galaxy-specific tools, including Watch Party, currently provide Arabic and English labels and use English as the fallback for other languages. Localized titles and descriptions depend on metadata availability and the user's configured TMDB key.
 
+## How to add your API keys
+
+API keys are optional for using the player. TMDB enables additional localized metadata; OMDb enables optional age-rating lookups. The public build does not contain a shared TMDB key.
+
+### TMDB — localized titles, descriptions, and genres
+
+1. Sign in to [TMDB](https://www.themoviedb.org), open your account's **Settings → API**, and request an API key if you do not already have one. Follow TMDB's registration requirements and terms. See the [official TMDB guide](https://developer.themoviedb.org/docs/faq).
+2. Copy your **API Key (v3 auth)**. Galaxy's current input accepts the **32-character hexadecimal API key**, not the longer **API Read Access Token / Bearer token**.
+3. In **Stremio Galaxy → Settings**, look at the bottom of the settings sidebar and expand **Advanced: metadata and TMDB**.
+4. Paste the key into **Optional TMDB API key** and click **Save**. Only paste the key itself, without quotes or a `Bearer` prefix.
+5. Select your preferred interface language and reopen a title's details. Translated information appears when the provider has a matching translation; otherwise the original information remains.
+
+The custom key stays in this installation's local WebView profile; it is not synced through your Stremio account. The password field does not display a saved key again. **Use default** removes your custom key. Because this public build has no bundled key, that returns TMDB lookups to the unconfigured state, even if the existing interface wording mentions a built-in key.
+
+### OMDb — optional age ratings
+
+1. Request your own key from the [official OMDb API key page](https://www.omdbapi.com/apikey.aspx), and complete any email verification or activation requested by the provider.
+2. Fully close Galaxy, including its tray icon.
+3. Open **`portable_config/stremio-settings.ini` inside your Galaxy installation folder** with a text editor.
+4. Find the existing `[PosterHover]` section and set its `OmdbApiKey` value. If the section is missing, add it once:
+
+```ini
+[PosterHover]
+Enabled=1
+OmdbApiKey=YOUR_OMDB_API_KEY
+```
+
+5. Replace `YOUR_OMDB_API_KEY` with your own key, save the file, and restart Galaxy. Do not create duplicate `[PosterHover]` sections or remove other settings in that section.
+
+OMDb only supplies age-rating information when it has suitable data for the title. Leave `OmdbApiKey=` empty to disable these optional requests. TMDB and OMDb keys are different and cannot be used interchangeably. Anime ratings from the configured public provider do not require a personal MyAnimeList API key in this version.
+
+**Keep your keys private. Do not post them in GitHub issues, commits, screenshots, or shared configuration files. These local settings are not an encrypted credential vault. Never edit or replace Galaxy's update-signing public key when configuring metadata services.**
+
 ## Galaxy features — in order
 
 ### 1. Galaxy identity and interface
